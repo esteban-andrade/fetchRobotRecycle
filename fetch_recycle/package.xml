@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>multiproject_fetch</name>
+  <name>fetch_recycle</name>
   <version>0.1.0</version>
   <description>
     Gazebo package for Fetch multiproject

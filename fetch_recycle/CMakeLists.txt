@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.7.2)
-project(multiproject_fetch)
+project(fetch_recycle)
 
 find_package(Boost REQUIRED)
 find_package(gazebo REQUIRED)
