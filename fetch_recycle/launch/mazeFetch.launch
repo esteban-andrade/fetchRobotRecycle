@@ -14,10 +14,10 @@
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="headless" value="$(arg headless)"/>
-    <arg name="world_name" value="$(find multiproject_fetch)/worlds/maze3.sdf"/>
+    <arg name="world_name" value="$(find fetch_recycle)/worlds/maze3.sdf"/>
   </include>
 
   <!-- Oh, you wanted a robot? -->
-  <include file="$(find multiproject_fetch)/launch/include/$(arg robot).launch.xml" />
+  <include file="$(find fetch_recycle)/launch/include/$(arg robot).launch.xml" />
 
 </launch>
