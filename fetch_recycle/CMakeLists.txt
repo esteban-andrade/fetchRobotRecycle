@@ -38,8 +38,8 @@ link_directories(
 )
 
 
-add_library(${PROJECT_NAME} src/plugin.cpp)
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+#add_library(${PROJECT_NAME} src/plugin.cpp)
+#target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
   
 
 
