@@ -1,0 +1,14 @@
+material cylinder
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture cylindertexture.png
+	scale 1 1
+      }
+    }
+  }
+}

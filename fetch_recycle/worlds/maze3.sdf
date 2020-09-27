@@ -5881,23 +5881,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -5905,23 +5900,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -5932,10 +5922,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6009,23 +5999,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6033,23 +6018,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6060,10 +6040,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6137,23 +6117,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6161,23 +6136,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6188,10 +6158,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6265,23 +6235,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6289,23 +6254,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6316,10 +6276,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6445,23 +6405,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6469,23 +6424,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6496,10 +6446,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6573,23 +6523,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6597,23 +6542,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6624,10 +6564,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6701,23 +6641,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6725,23 +6660,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6752,10 +6682,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
@@ -6829,23 +6759,18 @@
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6853,23 +6778,18 @@
         </visual>
         <visual name='visual'>
           <geometry>
-            <cylinder>
-              <radius>0.0236665</radius>
-              <length>0.0762781</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <material>
             <script>
-              <name>Gazebo/Grey</name>
-              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <uri>model://cans/materials/scripts</uri>
+              <uri>model://cans/materials/textures</uri>
+              <name>cylinder</name>
             </script>
-            <shader type='vertex'>
-              <normal_map>__default__</normal_map>
-            </shader>
-            <ambient>1 0.3 0.3 1</ambient>
-            <diffuse>0.7 0.7 0.7 1</diffuse>
-            <specular>0.01 0.01 0.01 1</specular>
-            <emissive>0 0 0 1</emissive>
+            
           </material>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <transparency>0</transparency>
@@ -6880,10 +6800,10 @@
           <max_contacts>10</max_contacts>
           <pose frame=''>0 0 0 0 -0 0</pose>
           <geometry>
-            <cylinder>
-              <radius>0.023667</radius>
-              <length>0.076278</length>
-            </cylinder>
+            <mesh>
+              <uri>model://cans/meshes/cylindermesh.dae</uri>
+              <scale>1 1 1</scale>
+            </mesh>
           </geometry>
           <surface>
             <friction>
