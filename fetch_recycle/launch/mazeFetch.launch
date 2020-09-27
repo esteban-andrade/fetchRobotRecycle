@@ -17,7 +17,7 @@
     <arg name="world_name" value="$(find fetch_recycle)/worlds/maze3.sdf"/>
   </include>
 
-  <!-- Oh, you wanted a robot? -->
-  <include file="$(find fetch_recycle)/launch/include/$(arg robot).launch.xml" />
+  <!-- Launch Fetch Robot -->
+  <include file="$(find fetch_gazebo)/launch/include/$(arg robot).launch.xml" />
 
 </launch>
