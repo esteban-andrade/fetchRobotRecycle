@@ -7004,9 +7004,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7120,9 +7120,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7236,9 +7236,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7352,9 +7352,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7468,9 +7468,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7584,9 +7584,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7700,9 +7700,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>
@@ -7816,9 +7816,9 @@
           </inertia>
           <pose frame=''>0 0 0.2 0 -0 0</pose>
         </inertial>
-        <self_collide>1</self_collide>
+        <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
-        <kinematic>1</kinematic>
+        <kinematic>0</kinematic>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <gravity>1</gravity>
         <visual name='ModelPreview_8::link::visual_1'>

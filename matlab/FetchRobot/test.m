@@ -25,7 +25,7 @@ rosinit(rosIP,11311); % Initialize ROS connection
 sub = rossubscriber('/joint_states');
 pause(1);
 
-msg = receive(sub,10)
+msg = receive(sub,1)
 
 
 
