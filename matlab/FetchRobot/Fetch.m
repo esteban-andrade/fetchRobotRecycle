@@ -33,12 +33,12 @@ function GetFetchRobot(self)
         name = ['Fetch_',datestr(now,'yyyymmddTHHMMSSFFF')];
 %     end
 
-    L(1) = Link('d',0.05,   'a',0.117,  'alpha',pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
+    L(1) = Link('d',0.05,   'a',0.117,  'alpha',-pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
     L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',pi/2); %shoulder lift
     L(3) = Link('d',0.35,   'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-360 360]), 'offset', 0);   %uperarm roll
     L(4) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-129 129]),'offset', 0);    %elbow flex
-    L(5) = Link('d',0.32,   'a',0,      'alpha',pi/2,   'qlim',deg2rad([-360,360]), 'offset',0);    %forearm roll
-    L(6) = Link('d',0,      'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-125,125]), 'offset', 0);   %wrist flex
+    L(5) = Link('d',0.32,   'a',0,      'alpha',-pi/2,   'qlim',deg2rad([-360,360]), 'offset',0);    %forearm roll
+    L(6) = Link('d',0,      'a',0,      'alpha',pi/2,  'qlim',deg2rad([-125,125]), 'offset', 0);   %wrist flex
     L(7) = Link('d',0.15,   'a',0,      'alpha',0,      'qlim',deg2rad([-360,360]), 'offset', 0);   %wrist roll
     
     self.model = SerialLink(L,'name',name);
