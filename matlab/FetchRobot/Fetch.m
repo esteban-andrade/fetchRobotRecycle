@@ -21,6 +21,7 @@ function self = Fetch(useGripper)
 self.GetFetchRobot();
 % robot = 
 self.PlotAndColourRobot();%robot,workspace);
+%drawnow
 end
 
 %% GetFetchRobot
