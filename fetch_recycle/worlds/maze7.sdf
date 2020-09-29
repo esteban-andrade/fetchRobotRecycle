@@ -6993,7 +6993,7 @@
     <model name='cans'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7109,7 +7109,7 @@
     <model name='cans_0'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7225,7 +7225,7 @@
     <model name='cans_1'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7341,7 +7341,7 @@
     <model name='cans_2'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7457,7 +7457,7 @@
     <model name='cans_3'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7573,7 +7573,7 @@
     <model name='cans_4'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7689,7 +7689,7 @@
     <model name='cans_5'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7805,7 +7805,7 @@
     <model name='cans_6'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
