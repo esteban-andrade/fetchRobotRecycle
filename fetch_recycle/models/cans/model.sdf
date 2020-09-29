@@ -3,7 +3,7 @@
   <model name='cans'>
     <link name='link'>
       <inertial>
-        <mass>0.362409</mass>
+        <mass>0.01</mass>
         <inertia>
           <ixx>0.00022647</ixx>
           <ixy>0</ixy>

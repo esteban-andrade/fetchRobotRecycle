@@ -37,6 +37,19 @@ link_directories(
   ${GAZEBO_LIBRARY_DIRS}
 )
 
+catkin_package(
+#  INCLUDE_DIRS include
+#  LIBRARIES FetchRobotPathFollow
+#  CATKIN_DEPENDS roscpp rospy std_msgs
+#  DEPENDS system_lib
+)
+
+## Mark executable scripts (Python etc.) for installation
+## in contrast to setup.py, you can choose the destination
+catkin_install_python(PROGRAMS
+  scripts/tilt_head_down.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 #add_library(${PROJECT_NAME} src/plugin.cpp)
 #target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})

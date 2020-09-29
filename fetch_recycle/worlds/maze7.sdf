@@ -177,80 +177,80 @@
         </link>
       </model>
       <model name='cans'>
-        <pose frame=''>-0.568374 4.91886 0.815 0 -0 0</pose>
+        <pose frame=''>-0.568374 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.568374 4.91886 0.815 0 -0 0</pose>
+          <pose frame=''>-0.568374 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_0'>
-        <pose frame=''>-0.766388 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>-0.766388 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.766388 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>-0.766388 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_1'>
-        <pose frame=''>-0.65743 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>-0.65743 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.65743 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>-0.65743 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_2'>
-        <pose frame=''>-0.46855 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>-0.46855 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.46855 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>-0.46855 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_3'>
-        <pose frame=''>0.834221 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>0.834221 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0.834221 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>0.834221 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_4'>
-        <pose frame=''>0.981183 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>0.981183 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>0.981183 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>0.981183 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_5'>
-        <pose frame=''>1.09177 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>1.09177 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>1.09177 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>1.09177 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
         </link>
       </model>
       <model name='cans_6'>
-        <pose frame=''>1.2973 4.9 0.815 0 -0 0</pose>
+        <pose frame=''>1.2973 4.5 0.815 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>1.2973 4.9 0.815 0 -0 0</pose>
+          <pose frame=''>1.2973 4.5 0.815 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 -27.0413 0 -0 0</acceleration>
           <wrench>0 0 -9.8 0 -0 0</wrench>
@@ -865,10 +865,10 @@
         </link>
       </model>
       <model name='table1'>
-        <pose frame=''>-0.704897 4.94257 0 0 -0 0</pose>
+        <pose frame=''>-0.704897 4.89394 0 0 -0 0</pose>
         <scale>1 1 1</scale>
         <link name='link'>
-          <pose frame=''>-0.704897 4.94257 0 0 -0 0</pose>
+          <pose frame=''>-0.704897 4.89394 0 0 -0 0</pose>
           <velocity>0 0 0 0 -0 0</velocity>
           <acceleration>0 0 0 0 -0 0</acceleration>
           <wrench>0 0 0 0 -0 0</wrench>
@@ -6993,7 +6993,7 @@
     <model name='cans'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7109,7 +7109,7 @@
     <model name='cans_0'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7225,7 +7225,7 @@
     <model name='cans_1'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7341,7 +7341,7 @@
     <model name='cans_2'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7457,7 +7457,7 @@
     <model name='cans_3'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7573,7 +7573,7 @@
     <model name='cans_4'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7689,7 +7689,7 @@
     <model name='cans_5'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
@@ -7805,7 +7805,7 @@
     <model name='cans_6'>
       <link name='link'>
         <inertial>
-          <mass>0.362409</mass>
+          <mass>0.01</mass>
           <inertia>
             <ixx>0.00022647</ixx>
             <ixy>0</ixy>
