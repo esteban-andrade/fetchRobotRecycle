@@ -24,5 +24,7 @@
     <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" respawn="false" output="screen">
         <remap from="image" to="/aruco_single/result" />
     </node>
+
+    <node name="demo" pkg="fetch_recycle" type="tilt_head_down.py" output="screen" />
     
 </launch>

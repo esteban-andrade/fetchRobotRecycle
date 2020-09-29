@@ -20,6 +20,6 @@
   <!-- Launch Fetch Robot -->
   <include file="$(find fetch_gazebo)/launch/include/$(arg robot).launch.xml" />
 
-  <node pkg="fetch_recycle" type="tilt_head_down.py" name="tilt_head_down" output="screen" />
+  
 
 </launch>
