@@ -33,16 +33,21 @@ end
 
 %% ROS
 rosinit
-%% gripper
+%% gripper publisher
 gripper_pub = rospublisher('/matlab_gripper_action', 'std_msgs/Bool');
 gripper_msg = rosmessage(gripper_pub);
 gripper_msg.Data = 1;
 send(gripper_pub,gripper_msg);
 
-%% arm
+%% arm publisher
 arm_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
 arm_msg = rosmessage(arm_pub);
 arm_msg.Position = q;
 send(arm_pub,arm_msg);
+
+%% can pose subscriber
+sub = rossubscriber('/aruco_single/position');
+pause(1);
+msg2 = receive(sub,10)
 %%
 rosshutdown
