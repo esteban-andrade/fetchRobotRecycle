@@ -23,7 +23,17 @@ rosIP = '192.168.20.10';   % IP address of ROS-enabled machine
 rosinit(rosIP,11311); % Initialize ROS connection
 %%
 sub = rossubscriber('/joint_states');
+pub1 = rospublisher('/matlab_joint_config','sensor_msgs/JointState')
+pub2 = rospublisher('/matlab_gripper_action','std_msgs/Bool')
 pause(1);
+%%
+gripper_status = false; 
+gripper_msg = rosmessage('std_msgs/Bool');
+gripper_msg.Data= gripper_status;
+send(pub2,gripper_msg)
+
+
+%%
 
 msg = receive(sub,1)
 
@@ -52,7 +62,21 @@ q_matrix = interpolateJointAnglesFetch(q1,get_jointstates',50);
 motion(q_matrix,fetch.model)
 
 
+%% Adjust Data
+
+entire_joints = msg.Position;
+%%
+temp_matrix = entire_joints(7:13)-get_jointstates;
 %%
 
+entire_joints(7:13) = temp_matrix
 
+
+%%
+sent = rosmessage(pub1);
+%sent.Position =entire_joints;
+
+
+send(pub1,sent);
+%%
 rosshutdown
