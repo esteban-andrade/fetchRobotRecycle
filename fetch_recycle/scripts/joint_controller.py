@@ -61,7 +61,7 @@ class JointController:
         trajectory.points[0].positions = head_joint_positions
         trajectory.points[0].velocities = [0.0] * len(head_joint_positions)
         trajectory.points[0].accelerations = [0.0] * len(head_joint_positions)
-        trajectory.points[0].time_from_start = rospy.Duration(5.0)
+        trajectory.points[0].time_from_start = rospy.Duration(0)
 
         head_goal = FollowJointTrajectoryGoal()
         head_goal.trajectory = trajectory
@@ -84,7 +84,7 @@ class JointController:
         trajectory.points[0].positions = arm_joint_positions
         trajectory.points[0].velocities =  [0.0] * len(arm_joint_positions)
         trajectory.points[0].accelerations = [0.0] * len(arm_joint_positions)
-        trajectory.points[0].time_from_start = rospy.Duration(1.0)
+        trajectory.points[0].time_from_start = rospy.Duration(0)
 
         arm_goal = FollowJointTrajectoryGoal()
         arm_goal.trajectory = trajectory
