@@ -9,6 +9,8 @@ from control_msgs.msg import (FollowJointTrajectoryAction,
                               GripperCommandAction,
                               GripperCommandGoal)
 from trajectory_msgs.msg import JointTrajectory, JointTrajectoryPoint
+from sensor_msgs.msg import JointState
+from std_msgs.msg   import Bool
 
 class JointController:
 
