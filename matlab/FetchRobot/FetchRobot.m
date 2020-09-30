@@ -34,13 +34,13 @@ classdef FetchRobot < handle
             pause(0.001);
            
             %These were the default DH PARAMATERS provided from the manifacturer
-    L(1) = Link('d',0.05,   'a',0.117,  'alpha',pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
-    L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',deg2rad(-80)); %shoulder lift
-    L(3) = Link('d',0.35,   'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-360 360]), 'offset', pi);   %uperarm roll
-    L(4) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-129 129]),'offset', 0);    %elbow flex
-    L(5) = Link('d',0.32,   'a',0,      'alpha',pi/2,   'qlim',deg2rad([-360,360]), 'offset',pi);    %forearm roll
-    L(6) = Link('d',0,      'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-125,125]), 'offset',0);   %wrist flex
-    L(7) = Link('d',0.15,   'a',0,      'alpha',0,      'qlim',deg2rad([-360,360]), 'offset', 0);   %wrist roll
+%     L(1) = Link('d',0.05,   'a',0.117,  'alpha',pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
+%     L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',deg2rad(-80)); %shoulder lift
+%     L(3) = Link('d',0.35,   'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-360 360]), 'offset', pi);   %uperarm roll
+%     L(4) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-129 129]),'offset', 0);    %elbow flex
+%     L(5) = Link('d',0.32,   'a',0,      'alpha',pi/2,   'qlim',deg2rad([-360,360]), 'offset',pi);    %forearm roll
+%     L(6) = Link('d',0,      'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-125,125]), 'offset',0);   %wrist flex
+%     L(7) = Link('d',0.15,   'a',0,      'alpha',0,      'qlim',deg2rad([-360,360]), 'offset', 0);   %wrist roll
            
 %     L(1) = Link('d',0.05,   'a',0.117,  'alpha',pi/2,   'qlim',deg2rad([-92 92]),   'offset', pi/2);   %shoulder pan
 %     L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',0); %shoulder lift
@@ -49,7 +49,14 @@ classdef FetchRobot < handle
 %     L(5) = Link('d',0.32,   'a',0,      'alpha',pi/2,   'qlim',deg2rad([-360,360]), 'offset',pi);    %forearm roll
 %     L(6) = Link('d',0,      'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-125,125]), 'offset', -pi/2);   %wrist flex
 %     L(7) = Link('d',0.15,   'a',0,      'alpha',0,      'qlim',deg2rad([-360,360]), 'offset', 0);   %wrist roll
-%     
+    L(1) = Link('d',0.05,   'a',0.117,  'alpha',-pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
+    L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',pi/2); %shoulder lift
+    L(3) = Link('d',0.35,   'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-360 360]), 'offset', 0);   %uperarm roll
+    L(4) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-129 129]),'offset', 0);    %elbow flex
+    L(5) = Link('d',0.32,   'a',0,      'alpha',-pi/2,   'qlim',deg2rad([-360,360]), 'offset',0);    %forearm roll
+    L(6) = Link('d',0,      'a',0,      'alpha',pi/2,  'qlim',deg2rad([-125,125]), 'offset', 0);   %wrist flex
+    L(7) = Link('d',0.15,   'a',0,      'alpha',0,      'qlim',deg2rad([-360,360]), 'offset', 0);   %wrist roll
+    
     self.model = SerialLink(L,'name',name);
     
             self.name = name;

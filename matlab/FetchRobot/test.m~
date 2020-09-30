@@ -36,7 +36,7 @@ constrained_joints_names = joints_names(7:13);
 
 get_jointstates = msg.Position(7:13);
 
-entire 
+
 %%
 
 %%animate(fetch.model,get_jointstates')
@@ -54,20 +54,17 @@ motion(q_matrix,fetch.model)
 
 %% Adjust Data
 
-entire_joints = msg.Position;
+entire_joints = msg.Position(:,:);
 %%
 temp_matrix = entire_joints(7:13)-get_jointstates
-%%
-
-entire_joints(7:13) = temp_matrix
 
 %%
-pub = rospublisher('/joint_states','sensor_msgs/JointState')
+pub = rospublisher('/joint_states')
 
 %%
-sent = rosmessage(pub);
-sent.Position =entire_joints;
+sent = rosmessage(joint_state);
+sent.Data = ;
 
-send(pub,sent);
+send(joint_state,sent);
 %%
 rosshutdown
