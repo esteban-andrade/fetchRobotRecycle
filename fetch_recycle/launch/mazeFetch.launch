@@ -1,0 +1,52 @@
+<launch>
+  <!-- Set params for world and fetch -->
+  <env name="GAZEBO_MODEL_PATH" value="$(find fetch_gazebo)/models:$(optenv GAZEBO_MODEL_PATH)" />
+
+  <arg name="robot" default="fetch"/>
+  <arg name="debug" default="false"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+
+  <!-- Start Gazebo with a blank world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="world_name" value="$(find fetch_recycle)/worlds/maze7.sdf"/>
+  </include>
+
+  <!-- Launch Fetch Robot -->
+  <include file="$(find fetch_gazebo)/launch/include/$(arg robot).launch.xml" />
+
+
+
+
+  <!-- Adjust arguments for Aruco Markers-->
+    <arg name="markerId"        default="200"/>
+    <arg name="markerSize"      default="0.04"/>    <!-- in m -->
+    <arg name="eye"             default="/head_camera/rgb/"/>
+    <arg name="marker_frame"    default="aruco_marker_frame"/>
+    <arg name="ref_frame"       default="head_camera_rgb_frame"/>  <!-- leave empty and the pose will be published wrt param parent_name. Old one is result --> 
+    <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
+
+    <!-- Launch marker tracker -->
+    <node pkg="aruco_ros" type="single" name="aruco_single">
+        <remap from="/camera_info" to="$(arg eye)/camera_info" />
+        <remap from="/image" to="$(arg eye)/image_raw" />
+        <param name="image_is_rectified" value="True"/>
+        <param name="marker_size"        value="$(arg markerSize)"/>
+        <param name="marker_id"          value="$(arg markerId)"/>
+        <param name="reference_frame"    value="$(arg ref_frame)"/>   <!-- frame in which the marker pose will be refered -->
+        <param name="camera_frame"       value="$(arg ref_frame)"/>
+        <param name="marker_frame"       value="$(arg marker_frame)" />
+        <param name="corner_refinement"  value="$(arg corner_refinement)" />
+    </node>
+
+    <!-- Run rqt_image_view to view marker/s -->
+    <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" respawn="false" output="screen">
+        <remap from="image" to="/aruco_single/result" />
+    </node>
+  
+</launch>

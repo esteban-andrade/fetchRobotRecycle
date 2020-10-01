@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# MATLAB
+*.asv
+
+*.vscode
+build*
