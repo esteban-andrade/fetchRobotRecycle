@@ -3,10 +3,6 @@ classdef Fetch < handle
         %> Robot model
         model;
         volume = [];
-        computedVolume;
-        transveralReach;
-        verticalReach;
-        arcRadius;
         name;
         
         %> workspace
@@ -18,7 +14,7 @@ classdef Fetch < handle
         toolParametersFilename = []; % Available are: 'DabPrintNozzleToolParameters.mat';
     end
     
-    properties (Access = private)
+    properties %(Access = private)
         gripper_pub;
         gripper_msg;
         arm_pub;
@@ -111,40 +107,24 @@ classdef Fetch < handle
         end
         
         %% Move Manipulator to Pose
-        function Move2Pose(self, pose)
-            steps = 50;
+        function Move2Pose(self, pose,setSteps)
+            steps = setSteps;
             q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
-            T2 = transl(pose);                                                   % Define a translation matrix            
+            T2 = transl(pose);                                                   % Define a translation matrix
             q2 = self.model.ikcon(T2,q1);
-            
-            qMatrix = jtraj(q1,q2,steps);
-            
-            for i=1:size(qMatrix,1)
-                self.model.animate(qMatrix(i,:))
-                drawnow();
-                self.arm_msg.Position = qMatrix(i,:);
-                send(self.arm_pub,self.arm_msg);
-                pause(0.02);
-            end
+            qMatrix = fetchMotion.interpolateJointAnglesFetch(q1,q2,steps);
+            fetchMotion.motion(qMatrix,self)
         end
         
         %% Move Manipulator to Joint state
-        function Move2JointState(self, q)
+        function Move2JointState(self, q,setSteps)
             
             if length(q) == 7
-                steps = 50;
+                steps = setSteps;
                 q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
                 q2 = q;
-                
-                qMatrix = jtraj(q1,q2,steps);
-
-                for i=1:size(qMatrix,1)
-                    self.model.animate(qMatrix(i,:))
-                    drawnow();
-                    self.arm_msg.Position = qMatrix(i,:);
-                    send(self.arm_pub,self.arm_msg);
-                    pause(0.02);
-                end
+                qMatrix = fetchMotion.interpolateJointAnglesFetch(q1,q2,steps);
+                fetchMotion.motion(qMatrix,self)
             else
                 disp('Too few or too many elements in q');
             end
