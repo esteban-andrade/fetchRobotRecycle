@@ -4,6 +4,14 @@ classdef Fetch < handle
         model;
         volume = [];
         name;
+        t;
+        deltaT;
+        steps;
+        delta;
+        %RMRC Param
+        epsilon = 0.1;      % Threshold value for manipulability/Damped Least Squares
+        W = diag([1 1 1 1 1 1]);   %  W * xdot
+       
         
         %> workspace
         workspace = [-2, 2, -2, 2, -0.3, 2];
@@ -129,6 +137,27 @@ classdef Fetch < handle
                 disp('Too few or too many elements in q');
             end
         end
+        %%
+        function RMRC2Pose(self,time,deltaTime,pose)
+            self.t = time;
+            self.deltaT=deltaTime;
+            self.steps = self.t/self.deltaT;
+            self.delta=2*pi/self.steps;
+            q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
+            T2 = transl(pose);                                                   % Define a translation matrix
+            q2 = self.model.ikcon(T2,q1);
+            
+            qMatrix = fetchMotion.RMRCPose(self,T2);
+         
+            self.model.plot(qMatrix,'trail','r-')
+            
+            
+        end
+        %%
+        function RMRC2JointState(self)
+            
+        end
+        
         
         
         %% Open/Close Gripper

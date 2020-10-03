@@ -28,3 +28,17 @@ robot.OpenGripper(false);
 pause(2);
 robot.OpenGripper(true);
 
+%%
+
+robot.RMRC2Pose(10,0.02,[0.2,0.3,0.6])
+
+%%
+robot.RMRC2Pose(5,0.02,[0.5,0.7,0.2])
+
+%%
+
+robot.RMRC2Pose(3,0.02,[-0.5,0.7,0.6])
+
+%%
+
+robot.RMRC2Pose(3,0.02,[0.3,0.3,0.6])
