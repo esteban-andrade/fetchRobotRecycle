@@ -11,7 +11,7 @@ classdef Fetch < handle
         %RMRC Param
         epsilon = 0.1;      % Threshold value for manipulability/Damped Least Squares
         W = diag([1 1 1 1 1 1]);   %  W * xdot
-       state;
+        state;
         
         %> workspace
         workspace = [-2, 2, -2, 2, -0.3, 2];
@@ -22,7 +22,7 @@ classdef Fetch < handle
         toolParametersFilename = []; % Available are: 'DabPrintNozzleToolParameters.mat';
     end
     
-    properties %(Access = private)
+    properties (Access = public)
         gripper_pub;
         gripper_msg;
         arm_pub;
@@ -70,8 +70,8 @@ classdef Fetch < handle
             self.model = SerialLink(L,'name',name);
 
             % Rotate robot to the correct orientation
-            self.model.base = transl([0 0 0.45]) * trotz(pi/2);
-            self.model.tool = trotx(pi)
+            self.model.base = transl([0 0.0254 0.734]) * trotz(pi/2);
+            self.model.tool = trotx(pi);
         end
 
         %% PlotAndColourRobot
@@ -192,7 +192,7 @@ classdef Fetch < handle
           
           get_jointstates = msg.Position(7:13);
           q1 = self.model.getpos
-          qMatrix = interpolateJointAnglesFetch(q1,get_jointstates',50);
+          qMatrix = fetchMotion.interpolateJointAnglesFetch(q1,get_jointstates',50);
           
           
             
