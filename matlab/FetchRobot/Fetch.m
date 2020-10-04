@@ -4,6 +4,14 @@ classdef Fetch < handle
         model;
         volume = [];
         name;
+        t;
+        deltaT;
+        steps;
+        delta;
+        %RMRC Param
+        epsilon = 0.1;      % Threshold value for manipulability/Damped Least Squares
+        W = diag([1 1 1 1 1 1]);   %  W * xdot
+       state;
         
         %> workspace
         workspace = [-2, 2, -2, 2, -0.3, 2];
@@ -33,12 +41,13 @@ classdef Fetch < handle
 
             rosshutdown;
             rosinit;
+            self.state = rossubscriber('/joint_states');
             
             % gripper publisher
             self.gripper_pub = rospublisher('/matlab_gripper_action', 'std_msgs/Bool');
             self.gripper_msg = rosmessage(self.gripper_pub);
             
-
+            
             % arm publisher
             self.arm_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
             self.arm_msg = rosmessage(self.arm_pub);
@@ -62,6 +71,7 @@ classdef Fetch < handle
 
             % Rotate robot to the correct orientation
             self.model.base = transl([0 0 0.45]) * trotz(pi/2);
+            self.model.tool = trotx(pi)
         end
 
         %% PlotAndColourRobot
@@ -129,6 +139,40 @@ classdef Fetch < handle
                 disp('Too few or too many elements in q');
             end
         end
+        %%
+        function RMRC2Pose(self,time,deltaTime,pose)
+            self.t = time;
+            self.deltaT=deltaTime;
+            self.steps = self.t/self.deltaT;
+            self.delta=2*pi/self.steps;
+            q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
+            T2 = transl(pose);                                                   % Define a translation matrix
+            q2 = self.model.ikcon(T2,q1);            
+            qMatrix = fetchMotion.RMRCPose(self,T2);         
+            %self.model.plot(qMatrix,'trail','r-')
+            fetchMotion.motion(qMatrix,self)
+            
+            
+        end
+        %%
+        function RMRC2JointState(self,time,deltaTime,q)
+            self.t = time;
+            self.deltaT=deltaTime;
+            self.steps = self.t/self.deltaT;
+            self.delta=2*pi/self.steps;
+            
+            if length(q) == 7
+                                
+                T2 = self.model.fkine(q);
+                qMatrix = fetchMotion.RMRCPose(self,T2);
+                %self.model.plot(qMatrix,'trail','r-')
+                fetchMotion.motion(qMatrix,self)
+            else
+                disp('Too few or too many elements in q');
+            end
+            
+        end
+        
         
         
         %% Open/Close Gripper
@@ -136,6 +180,34 @@ classdef Fetch < handle
             self.gripper_msg.Data = state;
             send(self.gripper_pub,self.gripper_msg);
             pause(0.02);
+        end
+        
+        %%
+        function getGazeboState(self)
+            
+          msg = receive(self.state,1);  
+          joints_names= msg.Name;
+          
+          constrained_joints_names = joints_names(7:13);
+          
+          get_jointstates = msg.Position(7:13);
+          q1 = self.model.getpos
+          qMatrix = interpolateJointAnglesFetch(q1,get_jointstates',50);
+          
+          
+            
+            for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
+                
+                %animate(robot,qMatrix(step,:));
+                self.model.animate(qMatrix(step, :));
+                endEffector = self.model.fkine(qMatrix(step, :)); %#ok<NASGU>
+                
+                %Logs the data in the file premade earlier
+               
+                drawnow()
+               
+            end
+            
         end
     end
 end

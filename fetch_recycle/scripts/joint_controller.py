@@ -75,7 +75,7 @@ class JointController:
 
         rospy.loginfo("Setting Head positions...")
         self.head_client.send_goal(head_goal)
-        self.head_client.wait_for_result(rospy.Duration(6.0))
+        self.head_client.wait_for_result(rospy.Duration(10.0))
         rospy.loginfo("...done")
 
     def setArmJoints(self, joint_states):
