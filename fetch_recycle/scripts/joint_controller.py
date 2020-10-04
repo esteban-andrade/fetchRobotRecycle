@@ -59,7 +59,7 @@ class JointController:
 
     def setHeadTilt(self):
         head_joint_names = ["head_pan_joint", "head_tilt_joint"]
-        head_joint_positions = [0.0, 0.7]
+        head_joint_positions = [0.0, 0.4]
 
         trajectory = JointTrajectory()
         trajectory.joint_names = head_joint_names
