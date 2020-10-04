@@ -47,3 +47,4 @@ robot.RMRC2Pose(3,0.02,[0.3,0.3,0.6])
 
 %%
 robot.RMRC2JointState(3,0.02,[pi/4 0 0 0 0 pi/2 0])
+
