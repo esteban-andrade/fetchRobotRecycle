@@ -102,13 +102,13 @@ classdef fetchMotion
                 invJ = pinv(J'*J + lambda *eye(7))*J';
                 qdot(i,:) = (invJ*xdot)';
                 for j = 1:7
-                    if j == 3 || j == 5 || j == 7
-                        if qMatrix(i,j) >= 180
-                            qMatrix(i,j) = mod(qMatrix(i,j), -180);
-                        elseif qMatrix(i,j) <= -180
-                            qMatrix(i,j) = mod(qMatrix(i,j), -180);
-                        end
-                    end
+%                     if j == 3 || j == 5 || j == 7
+%                         if qMatrix(i,j) >= 180
+%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
+%                         elseif qMatrix(i,j) <= -180
+%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
+%                         end
+%                     end
                     if qMatrix(i,j) + robot.deltaT*qdot(i,j) < robot.model.qlim(j,1)
                         qdot(i,j) = 0;
                     elseif qMatrix(i,j) + robot.deltaT*qdot(i,j) > robot.model.qlim(j,2)
@@ -117,12 +117,12 @@ classdef fetchMotion
                 end
                 qMatrix(i+1,:) = qMatrix(i,:) + robot.deltaT*qdot(i,:);                         	% Update next joint state based on joint velocities
                 positionError(:,i) = x(:,i+1) - T(1:3,4);                               % For plotting
-                angleError(:,i) = deltaTheta;
-                
+                angleError(:,i) = deltaTheta;                
                 
             end                                           
             
         end
+        %%
         
     end
 end
