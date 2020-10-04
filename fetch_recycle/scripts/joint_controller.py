@@ -59,20 +59,19 @@ class JointController:
 
     def setHeadTilt(self):
         head_joint_names = ["head_pan_joint", "head_tilt_joint"]
-        head_joint_positions = [0.0, 0.3]
+        head_joint_positions = [0.0, 0.7]
 
         trajectory = JointTrajectory()
         trajectory.joint_names = head_joint_names
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = head_joint_positions
         trajectory.points[0].velocities = [0.0 for _ in head_joint_positions]
-        trajectory.points[0].accelerations = [
-            0.0 for _ in head_joint_positions]
-        trajectory.points[0].time_from_start = rospy.Duration(0.01)
+        trajectory.points[0].accelerations = [0.0 for _ in head_joint_positions]
+        trajectory.points[0].time_from_start = rospy.Duration(0.0)
 
         head_goal = FollowJointTrajectoryGoal()
         head_goal.trajectory = trajectory
-        head_goal.goal_time_tolerance = rospy.Duration(0.01)
+        head_goal.goal_time_tolerance = rospy.Duration(0.0)
 
         rospy.loginfo("Setting Head positions...")
         self.head_client.send_goal(head_goal)
@@ -91,15 +90,15 @@ class JointController:
         trajectory.points[0].positions = arm_joint_positions
         trajectory.points[0].velocities = [0.0 for _ in arm_joint_positions]
         trajectory.points[0].accelerations = [0.0 for _ in arm_joint_positions]
-        trajectory.points[0].time_from_start = rospy.Duration(0.01)
+        trajectory.points[0].time_from_start = rospy.Duration(0.0)
 
         arm_goal = FollowJointTrajectoryGoal()
         arm_goal.trajectory = trajectory
-        arm_goal.goal_time_tolerance = rospy.Duration(0.01)
+        arm_goal.goal_time_tolerance = rospy.Duration(0.0)
 
         rospy.loginfo("Setting Arm positions...")
         self.arm_client.send_goal(arm_goal)
-        self.arm_client.wait_for_result(rospy.Duration(6.0))
+        self.arm_client.wait_for_result(rospy.Duration(10.0))
         rospy.loginfo("...done")
 
     def setGripper(self, open):
