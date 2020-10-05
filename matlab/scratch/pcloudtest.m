@@ -1,28 +1,16 @@
-%%
-marker = 0;
-% while marker == 0
-    sub = rossubscriber('/head_camera/rgb/image_raw');
-%     pause(0.1);
-    msg2 = receive(sub, 10);
-    img = readImage(msg2);
-    figure;
-    imshow(img)
-% end
+%% Point cloud test
+addpath('../scripts/');
 
-%%
-close;
-clc;
-sub1 = rossubscriber('/head_camera/depth_registered/points');
-pc_msg = receive(sub1, 10);
+ros_data = rosData;
 
-figure;
-% scatter3(pc_msg);
-xyz = readXYZ(pc_msg);
+xyz = ros_data.getPointCloud;
+
 pcshow(xyz)
 xlabel('X(m)')
 ylabel('Y(m)')
 zlabel('Z(m)')
 title('Detect a Cylinder in a Point Cloud')
+%% cylinder detection
 maxDistance = 1;
 roi = [0,0.5,-0.5,0.5,0.5,1];
 ptcloud =pointCloud(xyz);
