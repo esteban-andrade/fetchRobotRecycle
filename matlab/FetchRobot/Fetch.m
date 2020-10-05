@@ -11,7 +11,7 @@ classdef Fetch < handle
         %RMRC Param
         epsilon = 0.1;      % Threshold value for manipulability/Damped Least Squares
         W = diag([1 1 1 1 1 1]);   %  W * xdot
-        state;
+        state_sub;
         
         %> workspace
         workspace = [-2, 2, -2, 2, -0.3, 2];
@@ -41,7 +41,7 @@ classdef Fetch < handle
 
             rosshutdown;
             rosinit;
-            self.state = rossubscriber('/joint_states');
+            self.state_sub = rossubscriber('/joint_states');
             
             % gripper publisher
             self.gripper_pub = rospublisher('/matlab_gripper_action', 'std_msgs/Bool');
@@ -185,7 +185,7 @@ classdef Fetch < handle
         %%
         function getGazeboState(self)
             
-          msg = receive(self.state,1);  
+          msg = receive(self.state_sub,1);  
           joints_names= msg.Name;
           
           constrained_joints_names = joints_names(7:13);
