@@ -46,7 +46,7 @@ classdef fetchMotion
                 drawnow()
                 robot.arm_msg.Position = qMatrix(step,:);
                 send(robot.arm_pub,robot.arm_msg);
-                pause(0.01);
+%                 pause(0.01);
             end
         end
         

@@ -59,15 +59,14 @@ class JointController:
 
     def setHeadTilt(self):
         head_joint_names = ["head_pan_joint", "head_tilt_joint"]
-        head_joint_positions = [0.0, 0.3]
+        head_joint_positions = [0.0, 0.4]
 
         trajectory = JointTrajectory()
         trajectory.joint_names = head_joint_names
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = head_joint_positions
         trajectory.points[0].velocities = [0.0 for _ in head_joint_positions]
-        trajectory.points[0].accelerations = [
-            0.0 for _ in head_joint_positions]
+        trajectory.points[0].accelerations = [0.0 for _ in head_joint_positions]
         trajectory.points[0].time_from_start = rospy.Duration(0.0)
 
         head_goal = FollowJointTrajectoryGoal()
