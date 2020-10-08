@@ -14,7 +14,8 @@ robot.getGazeboState();
 robot.Move2JointState([-1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)
 %% Move to can pose
 
-pose = ros_data.getCanPosition;
+pose = ros_data.getCanPosition
+
 robot.RMRC2Pose(3,0.2,[pose(1), pose(2), pose(3)+0.2]);
 robot.OpenGripper(1)
 robot.RMRC2Pose(3,0.02,pose);
