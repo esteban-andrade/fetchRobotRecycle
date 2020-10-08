@@ -148,9 +148,9 @@ classdef Fetch < handle
             q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
             T2 = transl(pose);                                                   % Define a translation matrix
             q2 = self.model.ikcon(T2,q1);            
-            qMatrix = fetchMotion.RMRCPose(self,T2);         
+            [qMatrix,qdot] = fetchMotion.RMRCPose(self,T2);         
             %self.model.plot(qMatrix,'trail','r-')
-            fetchMotion.motion(qMatrix,self)
+            fetchMotion.RMRCmotion(qMatrix,qdot,self)
             
             
         end
@@ -164,9 +164,9 @@ classdef Fetch < handle
             if length(q) == 7
                                 
                 T2 = self.model.fkine(q);
-                qMatrix = fetchMotion.RMRCPose(self,T2);
+                 [qMatrix,qdot] = fetchMotion.RMRCPose(self,T2);
                 %self.model.plot(qMatrix,'trail','r-')
-                fetchMotion.motion(qMatrix,self)
+                  fetchMotion.RMRCmotion(qMatrix,qdot,self)
             else
                 disp('Too few or too many elements in q');
             end
@@ -191,7 +191,7 @@ classdef Fetch < handle
           constrained_joints_names = joints_names(7:13);
           
           get_jointstates = msg.Position(7:13);
-          q1 = self.model.getpos
+          q1 = self.model.getpos;
           qMatrix = fetchMotion.interpolateJointAnglesFetch(q1,get_jointstates',50);
           
           

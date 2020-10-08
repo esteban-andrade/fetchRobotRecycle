@@ -39,9 +39,10 @@ class JointController:
         self.setHeadTilt()
 
         arm_intermediate_positions = [1.32, 0, -1.4, 1.72, 0.0, 1.66, 0.0]
-        self.setArmJoints(arm_intermediate_positions)
+        arm_start_vels = [0, 0, 0, 0, 0, 0, 0]
+        self.setArmJoints(arm_intermediate_positions, arm_start_vels)
         arm_joint_positions = [1.32, 1.40, -0.2, 1.72, 0.0, 1.66, 0.0]
-        self.setArmJoints(arm_joint_positions)
+        self.setArmJoints(arm_joint_positions, arm_start_vels)
 
         self.setGripper(1)
 
@@ -52,7 +53,11 @@ class JointController:
 
     def jointMsgCallback(self, msg):
         q = msg.position
-        self.setArmJoints(q)
+        v = msg.velocity
+        if not v:
+            v = [0, 0, 0, 0, 0, 0, 0]
+
+        self.setArmJoints(q, v)
 
     def gripperMsgCallback(self, msg):
         self.setGripper(msg.data)
@@ -66,7 +71,8 @@ class JointController:
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = head_joint_positions
         trajectory.points[0].velocities = [0.0 for _ in head_joint_positions]
-        trajectory.points[0].accelerations = [0.0 for _ in head_joint_positions]
+        trajectory.points[0].accelerations = [
+            0.0 for _ in head_joint_positions]
         trajectory.points[0].time_from_start = rospy.Duration(0.0)
 
         head_goal = FollowJointTrajectoryGoal()
@@ -78,17 +84,18 @@ class JointController:
         self.head_client.wait_for_result(rospy.Duration(10.0))
         rospy.loginfo("...done")
 
-    def setArmJoints(self, joint_states):
+    def setArmJoints(self, joint_states, joint_vel):
         arm_joint_names = ["shoulder_pan_joint", "shoulder_lift_joint", "upperarm_roll_joint",
                            "elbow_flex_joint", "forearm_roll_joint", "wrist_flex_joint", "wrist_roll_joint"]
         arm_joint_positions = joint_states
+        arm_joint_velocities = joint_vel
 
         trajectory = JointTrajectory()
         trajectory.joint_names = arm_joint_names
 
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = arm_joint_positions
-        trajectory.points[0].velocities = [0.0 for _ in arm_joint_positions]
+        trajectory.points[0].velocities = arm_joint_velocities
         trajectory.points[0].accelerations = [0.0 for _ in arm_joint_positions]
         trajectory.points[0].time_from_start = rospy.Duration(0.0)
 
