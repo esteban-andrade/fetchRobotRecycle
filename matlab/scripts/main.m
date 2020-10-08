@@ -6,6 +6,7 @@ view(3);
 
 addpath('../FetchRobot/');
 addpath('../scripts/');
+addpath('../GUI/');
 
 robot = Fetch('fetch');
 robot.Move2Pose([0.2,0.3,0.6]);
