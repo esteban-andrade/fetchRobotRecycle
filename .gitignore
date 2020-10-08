@@ -33,6 +33,7 @@
 
 # MATLAB
 *.asv
+*.mat
 
 *.vscode
 build*
