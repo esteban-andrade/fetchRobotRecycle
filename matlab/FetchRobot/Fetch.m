@@ -27,6 +27,7 @@ classdef Fetch < handle
         gripper_msg;
         arm_pub;
         arm_msg;
+        gui;
     end
 
     methods %% Class for Fetch robot simulation
@@ -52,6 +53,12 @@ classdef Fetch < handle
             self.arm_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
             self.arm_msg = rosmessage(self.arm_pub);
             
+            % Will update the position of the MATLAB instance in order to create accuracy on the motion in gazebo
+            self.getGazeboState;
+            
+            %% launch GUI
+            self.gui = app1;
+            self.gui.addRobot(self);
         end
 
         %% GetFetchRobot

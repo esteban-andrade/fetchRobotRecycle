@@ -43,10 +43,15 @@ classdef fetchMotion
                     end
                     
                 end
-                drawnow()
-                robot.arm_msg.Position = qMatrix(step,:);
-                send(robot.arm_pub,robot.arm_msg);
-%                 pause(0.01);
+                
+                if robot.gui.StartButton.Value == 1
+                    drawnow()
+                    robot.arm_msg.Position = qMatrix(step,:);
+                    send(robot.arm_pub,robot.arm_msg);
+    %                 pause(0.01);
+                else
+   
+                end
             end
         end
         %%
@@ -80,11 +85,16 @@ classdef fetchMotion
                     end
                     
                 end
-                drawnow()
-                robot.arm_msg.Position = qMatrix(step,:);
-                robot.arm_msg.Velocity=qdot(step,:)/5;
-                send(robot.arm_pub,robot.arm_msg);
-%                 pause(0.01);
+                
+                if robot.gui.StopButton.Value == 0
+                    drawnow()
+                    robot.arm_msg.Position = qMatrix(step,:);
+                    robot.arm_msg.Velocity=qdot(step,:)/5;
+                    send(robot.arm_pub,robot.arm_msg);
+    %                 pause(0.01);
+                else
+                    
+                end
             end
         end
         
