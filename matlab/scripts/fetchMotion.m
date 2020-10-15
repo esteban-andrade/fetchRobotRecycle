@@ -164,7 +164,7 @@ classdef fetchMotion
         function time= calculateTime(T, canpose)
             dist = norm(T(1:3,4)' - canpose(:));
             
-            max_steps = 15;
+            max_steps = 50;
             min_steps = 5;
             max_dist = 0.94;
             min_dist = 0.01;

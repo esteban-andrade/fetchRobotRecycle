@@ -47,7 +47,7 @@ classdef rosData
             self.odom_sub = rossubscriber('/odom');
             odom_msg = receive(self.odom_sub);
             
-            global_bin_position = [0.376727 4.176230];
+            global_bin_position = [0.821506 4.180764];
             odom_msg.Pose.Pose.Position.Y = -odom_msg.Pose.Pose.Position.Y;
             y = global_bin_position(2) - odom_msg.Pose.Pose.Position.X;
             x = global_bin_position(1) - odom_msg.Pose.Pose.Position.Y;
