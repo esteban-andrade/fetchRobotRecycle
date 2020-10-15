@@ -12,7 +12,7 @@ robot = Fetch('fetch');
 ros_data = rosData;
 fetch_motion = fetchMotion;
 
-%%
+%% Rember to press 'start' on GUI before running this
 
 robot.Move2JointState([-1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)
 %% point cloud
@@ -43,5 +43,5 @@ robot.RMRC2Pose(5,0.02,[pose(1), pose(2), pose(3)+0.2]);
 bin_position = ros_data.getBinLocalPosition
 time = fetch_motion.calculateTime(robot.model.fkine(robot.model.getpos), pose);
 robot.Move2Pose([bin_position(1), bin_position(2), bin_position(3)],ceil(time/0.02));
-pause(3)
+pause(2)
 robot.OpenGripper(1)
