@@ -38,11 +38,11 @@ class JointController:
 
         self.setHeadTilt()
 
-        arm_intermediate_positions = [1.32, 0, -1.4, 1.72, 0.0, 1.66, 0.0]
-        arm_start_vels = [0, 0, 0, 0, 0, 0, 0]
-        self.setArmJoints(arm_intermediate_positions, arm_start_vels)
-        arm_joint_positions = [1.32, 1.40, -0.2, 1.72, 0.0, 1.66, 0.0]
-        self.setArmJoints(arm_joint_positions, arm_start_vels)
+        # arm_intermediate_positions = [1.32, 0, -1.4, 1.72, 0.0, 1.66, 0.0]
+        # arm_start_vels = [0, 0, 0, 0, 0, 0, 0]
+        # self.setArmJoints(arm_intermediate_positions, arm_start_vels)
+        # arm_joint_positions = [1.32, 1.40, -0.2, 1.72, 0.0, 1.66, 0.0]
+        # self.setArmJoints(arm_joint_positions, arm_start_vels)
 
         self.setGripper(1)
 
