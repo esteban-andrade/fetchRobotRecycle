@@ -48,8 +48,9 @@ classdef rosData
             odom_msg = receive(self.odom_sub);
             
             global_bin_position = [0.376727 4.176230];
-            y = global_bin_position(2) - odom_msg.Pose.Pose.Position.Y;
-            x = global_bin_position(1) - odom_msg.Pose.Pose.Position.X;
+            odom_msg.Pose.Pose.Position.Y = -odom_msg.Pose.Pose.Position.Y;
+            y = global_bin_position(2) - odom_msg.Pose.Pose.Position.X;
+            x = global_bin_position(1) - odom_msg.Pose.Pose.Position.Y;
             local_bin_position = [x y 1];
         end
     end
