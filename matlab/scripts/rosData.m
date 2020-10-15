@@ -19,7 +19,7 @@ classdef rosData
             self.can_position_sub = rossubscriber('/aruco_single/position');
             can_position_msg = receive(self.can_position_sub);
             raw_pos = can_position_msg.Vector;
-            pose = [raw_pos.X-0.02, raw_pos.Z+0.1, (raw_pos.Y + 0.99)];
+            pose = [raw_pos.X-0.02, raw_pos.Z+0.1, (raw_pos.Y + 1)];
         end
         
         function xyz = getPointCloud(self)
@@ -51,7 +51,7 @@ classdef rosData
             odom_msg.Pose.Pose.Position.Y = -odom_msg.Pose.Pose.Position.Y;
             y = global_bin_position(2) - odom_msg.Pose.Pose.Position.X;
             x = global_bin_position(1) - odom_msg.Pose.Pose.Position.Y;
-            local_bin_position = [x y 1];
+            local_bin_position = [x y 1.15];
         end
     end
 end

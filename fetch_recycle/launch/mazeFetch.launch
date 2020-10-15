@@ -30,6 +30,8 @@
     <arg name="ref_frame"       default="head_camera_rgb_optical_frame"/>  <!-- leave empty and the pose will be published wrt param parent_name. Old one is result --> 
     <arg name="corner_refinement" default="LINES" /> <!-- NONE, HARRIS, LINES, SUBPIX -->
 
+
+   
     <!-- Launch marker tracker -->
     <node pkg="aruco_ros" type="single" name="aruco_single">
         <remap from="/camera_info" to="$(arg eye)/camera_info" />
@@ -43,12 +45,12 @@
         <param name="corner_refinement"  value="$(arg corner_refinement)" />
     </node>
 
+     <node pkg="fetch_recycle" type="joint_controller.py" name="joint_controller" output="screen"/>
+    
     <!-- Run rqt_image_view to view marker/s -->
     <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" respawn="false" output="screen">
         <remap from="image" to="/aruco_single/result" />
     </node>
 
-    <node pkg="fetch_recycle" type="joint_controller.py" name="joint_controller" output="screen">
-    </node>
   
 </launch>

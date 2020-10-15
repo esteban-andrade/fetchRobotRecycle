@@ -16,7 +16,7 @@ gui.addRobot(robot);
 %% Will update the position of the MATLAB instance in order to create accuracy on the motion in gazebo
 robot.getGazeboState();
 
-robot.Move2JointState([-1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)
+% robot.Move2JointState([-1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)
 %% point cloud
 ros_data.getPointCloud; 
 
