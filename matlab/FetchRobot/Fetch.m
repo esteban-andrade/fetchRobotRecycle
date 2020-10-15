@@ -143,7 +143,7 @@ classdef Fetch < handle
         function RMRC2Pose(self,time,deltaTime,pose)
             self.t = time;
             self.deltaT=deltaTime;
-            self.steps = ceiling(self.t/self.deltaT);
+            self.steps = ceil(self.t/self.deltaT);
             self.delta=2*pi/self.steps;
             q1 = self.model.getpos;                                              % Derive joint angles for required end-effector transformation
             T2 = transl(pose);                                                   % Define a translation matrix
@@ -158,7 +158,7 @@ classdef Fetch < handle
         function RMRC2JointState(self,time,deltaTime,q)
             self.t = time;
             self.deltaT=deltaTime;
-            self.steps = ceiling(self.t/self.deltaT);
+            self.steps = ceil(self.t/self.deltaT);
             self.delta=2*pi/self.steps;
             
             if length(q) == 7
