@@ -82,7 +82,7 @@ classdef fetchMotion
                 end
                 drawnow()
                 robot.arm_msg.Position = qMatrix(step,:);
-                robot.arm_msg.Velocity=qdot(step,:);
+                robot.arm_msg.Velocity=qdot(step,:)/5;
                 send(robot.arm_pub,robot.arm_msg);
 %                 pause(0.01);
             end
@@ -161,6 +161,19 @@ classdef fetchMotion
             
         end
         %%
+        function time= calculateTime(T, canpose)
+            dist = norm(T(1:3,4)' - canpose(:));
+            
+            max_steps = 15;
+            min_steps = 5;
+            max_dist = 0.94;
+            min_dist = 0.01;
+            deltaT = 0.02;
+            
+            gain = (dist - min_dist)/max_dist;
+            steps = gain*max_steps + min_steps;
+            time = steps * deltaT
+        end
         
     end
 end
