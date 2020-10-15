@@ -96,12 +96,13 @@ class JointController:
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = arm_joint_positions
         trajectory.points[0].velocities = arm_joint_velocities
-        trajectory.points[0].accelerations = [0.0 for _ in arm_joint_positions]
-        trajectory.points[0].time_from_start = rospy.Duration(0.0)
+        trajectory.points[0].accelerations = [
+            0.0 for _ in arm_joint_velocities]
+        trajectory.points[0].time_from_start = rospy.Duration(0.02)
 
         arm_goal = FollowJointTrajectoryGoal()
         arm_goal.trajectory = trajectory
-        arm_goal.goal_time_tolerance = rospy.Duration(0.0)
+        arm_goal.goal_time_tolerance = rospy.Duration(0.5)
 
         rospy.loginfo("Setting Arm positions...")
         self.arm_client.send_goal(arm_goal)
