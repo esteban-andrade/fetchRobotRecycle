@@ -6,6 +6,7 @@ view(3);
 
 addpath('../FetchRobot/');
 addpath('../scripts/');
+addpath('../GUI/');
 
 robot = Fetch('fetch');
 ros_data = rosData;

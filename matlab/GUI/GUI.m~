@@ -85,7 +85,7 @@ function Joint1Slider_Callback(hObject, eventdata, handles)
 
 set(handles.Joint1Slider, 'Max', 92, 'Min', -92)
 Sliderdata = get(handles.Joint1Slider, 'Value');
-set(handle.Joint1Slider, 'Value', 40);
+set(handle.Joint1Slider
 set(handles.Joint1Box, 'String', Sliderdata);
 set(handles.Joint1Slider, 'SliderStep', [1/184,1/184]);
 % Joint defaults: 1.32, 1.4, -0.2, 1.72, 0, 1.66, 0
