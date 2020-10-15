@@ -18,10 +18,9 @@
   </include>
 
   <!-- Launch Fetch Robot -->
-  <include file="$(find fetch_gazebo)/launch/include/$(arg robot).launch.xml" />
-
-
-
+  <include file="$(find fetch_gazebo)/launch/include/$(arg robot).launch.xml" >
+    <arg name="yaw" value="1.57"/>
+  </include>
 
   <!-- Adjust arguments for Aruco Markers-->
     <arg name="markerId"        default="200"/>
