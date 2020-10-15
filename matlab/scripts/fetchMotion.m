@@ -138,7 +138,7 @@ classdef fetchMotion
                 
                 N = null(J);
                 invJ = pinv(J'*J + lambda *eye(7))*J';
-                qdot(i,:) = (invJ*xdot+N)'
+                qdot(i,:) = (invJ*xdot+N)';
                 for j = 1:7
 %                     if j == 3 || j == 5 || j == 7
 %                         if qMatrix(i,j) >= 180

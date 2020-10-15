@@ -9,8 +9,12 @@ kin = loadrobot('kinovaJacoJ2S7S300');
 floor = collisionBox(1, 1, 0.01);
 tabletop1 = collisionBox(0.4,1,0.02);
 tabletop1.Pose = trvec2tform([0.3,0,0.6]);
+
 tabletop2 = collisionBox(0.6,0.2,0.02);
 tabletop2.Pose = trvec2tform([-0.2,0.4,0.5]);
+
+tabletop3 = collisionBox(0.6,0.2,0.02);
+tabletop3.Pose = trvec2tform([-0.2,-0.4,0.5]);
 can = collisionCylinder(0.03,0.16);
 can.Pose = trvec2tform([0.3,0.0,0.7]);
 
@@ -41,6 +45,7 @@ sv = ExampleHelperValidatorRigidBodyTree(ss);
 % Add obstacles in the environment
 addFixedObstacle(sv,tabletop1, 'tabletop1', [71 161 214]/256);
 addFixedObstacle(sv,tabletop2, 'tabletop2', [71 161 214]/256);
+addFixedObstacle(sv,tabletop3, 'tabletop3', [71 161 214]/256);
 addFixedObstacle(sv,can, 'can', 'r');
 addFixedObstacle(sv,floor, 'floor', [1,0.5,0]);
 

@@ -96,16 +96,17 @@ class JointController:
         trajectory.points.append(JointTrajectoryPoint())
         trajectory.points[0].positions = arm_joint_positions
         trajectory.points[0].velocities = arm_joint_velocities
-        trajectory.points[0].accelerations = [0.0 for _ in arm_joint_positions]
-        trajectory.points[0].time_from_start = rospy.Duration(0.0)
+        trajectory.points[0].accelerations = [
+            0.0 for _ in arm_joint_velocities]
+        trajectory.points[0].time_from_start = rospy.Duration(0.0001)
 
         arm_goal = FollowJointTrajectoryGoal()
         arm_goal.trajectory = trajectory
-        arm_goal.goal_time_tolerance = rospy.Duration(0.5)
+        arm_goal.goal_time_tolerance = rospy.Duration(25.0)
 
         rospy.loginfo("Setting Arm positions...")
         self.arm_client.send_goal(arm_goal)
-        self.arm_client.wait_for_result()
+        # self.arm_client.wait_for_result(rospy.Duration(25.0))
         rospy.loginfo("...done")
 
     def setGripper(self, open):
@@ -118,7 +119,7 @@ class JointController:
 
         rospy.loginfo("Setting Gripper positions...")
         self.gripper_client.send_goal(gripper_goal)
-        self.gripper_client.wait_for_result(rospy.Duration(5.0))
+        # self.gripper_client.wait_for_result(rospy.Duration(5.0))
         rospy.loginfo("...done")
 
 
