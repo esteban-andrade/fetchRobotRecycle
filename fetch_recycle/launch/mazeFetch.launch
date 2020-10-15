@@ -47,5 +47,8 @@
     <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" respawn="false" output="screen">
         <remap from="image" to="/aruco_single/result" />
     </node>
+
+    <node pkg="fetch_recycle" type="joint_controller.py" name="joint_controller" output="screen">
+    </node>
   
 </launch>
