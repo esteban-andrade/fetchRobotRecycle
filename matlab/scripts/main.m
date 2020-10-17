@@ -37,7 +37,7 @@ robot.RMRC2Pose(time,0.02,pose);
 robot.OpenGripper(0)
 pause(1);
 
-robot.RMRC2Pose(5,0.02,[pose(1), pose(2), pose(3)+0.2]);
+robot.RMRC2Pose(5,0.02,[pose(1), pose(2)-0.07, pose(3)+0.2]);
 
 %% Go to bin
 bin_position = ros_data.getBinLocalPosition
