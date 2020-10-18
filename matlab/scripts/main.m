@@ -41,7 +41,7 @@ robot.RMRC2Pose(5,0.02,[pose(1), pose(2)-0.07, pose(3)+0.2]);
 
 %% Go to bin
 bin_position = ros_data.getBinLocalPosition
-time = fetch_motion.calculateTime(robot.model.fkine(robot.model.getpos), pose);
+time = fetch_motion.calculateTime(robot.model.fkine(robot.model.getpos), bin_position);
 robot.Move2Pose([bin_position(1), bin_position(2), bin_position(3)],ceil(time/0.02));
 pause(2)
 robot.OpenGripper(1)

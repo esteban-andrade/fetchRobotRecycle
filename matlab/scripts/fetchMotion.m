@@ -19,7 +19,6 @@ classdef fetchMotion
             
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
                 if robot.gui.StartButton.Value == 1
-                    robot.active_traj = 1;
                     %animate(robot,qMatrix(step,:));
                     robot.model.animate(qMatrix(step, :));
                     endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
@@ -50,16 +49,21 @@ classdef fetchMotion
                     robot.arm_msg.Position = qMatrix(step,:);
                     robot.arm_msg.Velocity=0.5;
                     send(robot.arm_pub,robot.arm_msg);
-                    robot.gui.updateSliders;
                     
                     if step == size(qMatrix,1)
                         robot.q_before_pause = [];
                         robot.active_traj = 0;
                     end
                 else
-                    robot.q_before_pause = qMatrix(end,:);
+                    if robot.gui.EmergencyStopButton.Value == 1
+                        robot.q_before_pause = [];
+                        robot.active_traj = 0;
+                    else
+                        robot.q_before_pause = qMatrix(end,:);
+                    end
                     break;
                 end
+                robot.active_traj = 1;
             end
             robot.gui.updateAll;
         end
@@ -70,7 +74,6 @@ classdef fetchMotion
             
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
                 if robot.gui.StartButton.Value == 1
-                    robot.active_traj = 1;
                     %animate(robot,qMatrix(step,:));
                     robot.model.animate(qMatrix(step, :));
                     endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
@@ -101,16 +104,21 @@ classdef fetchMotion
                     robot.arm_msg.Position = qMatrix(step,:);
                     robot.arm_msg.Velocity=qdot(step,:)/5;
                     send(robot.arm_pub,robot.arm_msg);
-                    robot.gui.updateSliders;
                     
                     if step == size(qMatrix,1)
                         robot.q_before_pause = [];
                         robot.active_traj = 0;
                     end
                 else
-                    robot.q_before_pause = qMatrix(end,:);
+                    if robot.gui.EmergencyStopButton.Value == 1
+                        robot.q_before_pause = [];
+                        robot.active_traj = 0;
+                    else
+                        robot.q_before_pause = qMatrix(end,:);
+                    end
                     break;
                 end
+                robot.active_traj = 1;
             end
             robot.gui.updateAll;
         end
