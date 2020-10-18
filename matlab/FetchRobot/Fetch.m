@@ -13,6 +13,8 @@ classdef Fetch < handle
         W = diag([1 1 1 1 1 1]);   %  W * xdot
         state_sub;
         
+        active_traj;
+        q_before_pause;
         %> workspace
         workspace = [-2, 2, -2, 2, -0.3, 2];
         % workspace = [-1.6 1.6 -1.6 1.6 -0.3 1];  %change workspace for easier approach
@@ -27,6 +29,7 @@ classdef Fetch < handle
         gripper_msg;
         arm_pub;
         arm_msg;
+        gui;
     end
 
     methods %% Class for Fetch robot simulation
@@ -52,6 +55,12 @@ classdef Fetch < handle
             self.arm_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
             self.arm_msg = rosmessage(self.arm_pub);
             
+            % Will update the position of the MATLAB instance in order to create accuracy on the motion in gazebo
+            self.getGazeboState;
+            
+            %% launch GUI
+            self.gui = app1;
+            self.gui.addRobot(self);
         end
 
         %% GetFetchRobot
@@ -60,7 +69,7 @@ classdef Fetch < handle
             pause(0.001);
             
             L(1) = Link('d',0.05,   'a',0.117,  'alpha',-pi/2,   'qlim',deg2rad([-92 92]),   'offset', 0);   %shoulder pan
-            L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-87 70]),   'offset',pi/2); %shoulder lift
+            L(2) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-70 87]),   'offset',pi/2); %shoulder lift
             L(3) = Link('d',0.35,   'a',0,      'alpha',-pi/2,  'qlim',deg2rad([-360 360]), 'offset', 0);   %uperarm roll
             L(4) = Link('d',0,      'a',0,      'alpha',pi/2,   'qlim',deg2rad([-129 129]),'offset', 0);    %elbow flex
             L(5) = Link('d',0.32,   'a',0,      'alpha',-pi/2,   'qlim',deg2rad([-360,360]), 'offset',0);    %forearm roll

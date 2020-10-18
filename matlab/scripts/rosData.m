@@ -6,6 +6,7 @@ classdef rosData
         can_position_sub;
         pc_sub;
         odom_sub;
+        rgb_sub;
     end
     
     methods
@@ -52,6 +53,12 @@ classdef rosData
             y = global_bin_position(2) - odom_msg.Pose.Pose.Position.X;
             x = global_bin_position(1) - odom_msg.Pose.Pose.Position.Y;
             local_bin_position = [x y 1.15];
+        end
+        
+        function rgb = getRGBimage(self)
+            self.rgb_sub = rossubscriber('/head_camera/rgb/image_raw');
+            rgb_msg = receive(self.rgb_sub);
+            rgb = readImage(rgb_msg);
         end
     end
 end
