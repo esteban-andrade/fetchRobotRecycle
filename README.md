@@ -12,7 +12,7 @@ In order to get  all the models to gazebo please copy all the folders that are i
 /home/.gazebo/models
 ~~~~
 ## Person Tracking Dependencies. 
-Please add the following folders into your catkin workspace. 
+Please add the following folders into your catkin workspace. These file are under People_tracking_depencies
 ~~~bash
 humanoid_msgs
 pal_msgs
