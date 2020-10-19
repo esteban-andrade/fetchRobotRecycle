@@ -28,5 +28,13 @@ Add the human detection package into your workspace
 pal_person_detector_opencv
 catkin_make
 ~~~
+Note: this package was mapped to an Intel RealSense D435i. If you want to use another camera. Please edit the topic or remap the topic from the launch file 
 
+~~~
+roslaunch pal_person_detector_opencv detector.launch
+~~~
+To visualise the detection please run 
+~~~
+rosrun image_view image_view image:=/person_detector/debug
+~~~
 
