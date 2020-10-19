@@ -11,4 +11,22 @@ In order to get  all the models to gazebo please copy all the folders that are i
 ~~~~bash
 /home/.gazebo/models
 ~~~~
+## Person Tracking Dependencies. 
+Please add the following folders into your catkin workspace. These file are under People_tracking_depencies
+~~~bash
+humanoid_msgs
+pal_msgs
+catkin_make
+~~~
+To add install external depencies please run 
+~~~bash
+rosdep install --from-paths src --ignore-src -r -y
+~~~
+
+Add the human detection package into your workspace
+~~~bash
+pal_person_detector_opencv
+catkin_make
+~~~
+
 
