@@ -19,9 +19,16 @@ pal_msgs
 catkin_make
 ~~~
 To add install external depencies please run 
+~~~
+sudo apt-get install ros-melodic-kalman-filter 
+sudo apt-get install ros-melodic-easy-markers 
+sudo apt-get install ros-melodic-face-detector
+~~~
+alternatively, to install all deoendencies please run
 ~~~bash
 rosdep install --from-paths src --ignore-src -r -y
 ~~~
+
 
 Add the human detection package into your workspace
 ~~~bash
