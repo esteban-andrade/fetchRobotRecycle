@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <launch>
-  <arg name="max_rate"  default="5"/>
+  <arg name="max_rate"  default="1000"/>
   <arg name="scale"     default="0.5"/>
   <arg name="image"     default="/camera/color/image_raw"/>
 

@@ -16,9 +16,22 @@ classdef fetchMotion
         function motion(qMatrix, robot) %pass Q matrix and corresponding robot
             
             logData = ['transforms-data.mat']; % log data into a mat file
-            
+             people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
+                 
+                
                 if robot.gui.StartButton.Value == 1
+                    msg = receive(people_sub);
+                    status = msg.Data; 
+                    
+                if status==false
+                    robot.gui.EmergencyStopButton.Value = 1;
+                    robot.gui.setEstop;                 
+                    robot.q_before_pause = [];
+                        robot.active_traj = 0;
+                    disp('Human Detected')
+                end
+                    
                     %animate(robot,qMatrix(step,:));
                     robot.model.animate(qMatrix(step, :));
                     endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
@@ -71,10 +84,21 @@ classdef fetchMotion
          function RMRCmotion(qMatrix,qdot, robot) %pass Q matrix and corresponding robot
             
             logData = ['transforms-data.mat']; % log data into a mat file
-            
+            people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
+                
                 if robot.gui.StartButton.Value == 1
                     %animate(robot,qMatrix(step,:));
+                    msg = receive(people_sub);
+                    status = msg.Data;
+                    
+                    if status==false
+                        robot.gui.EmergencyStopButton.Value = 1;
+                        robot.gui.setEstop;
+                        robot.q_before_pause = [];
+                        robot.active_traj = 0;
+                        disp('Human Detected')
+                    end
                     robot.model.animate(qMatrix(step, :));
                     endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
