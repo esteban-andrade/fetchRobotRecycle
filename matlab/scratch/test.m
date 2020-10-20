@@ -140,3 +140,17 @@ rosshutdown
 % msg2 = receive(sub,10)
 % %%
 % rosshutdown
+
+%%
+
+environmentPeopleDetector  = environmentSafety;
+
+%%
+while (1)
+
+
+ state = environmentPeopleDetector.getStatus
+%environmentPeopleDetector.getStatus;
+%environmentPeopleDetector.peopleDetected
+end
+%%

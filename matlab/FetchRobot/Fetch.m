@@ -22,6 +22,7 @@ classdef Fetch < handle
         %> If we have a tool model which will replace the final links model, combined ply file of the tool model and the final link models
         toolModelFilename = []; % Available are: 'DabPrintNozzleTool.ply';
         toolParametersFilename = []; % Available are: 'DabPrintNozzleToolParameters.mat';
+       
     end
     
     properties (Access = public)
