@@ -24,7 +24,7 @@ sudo apt-get install ros-melodic-kalman-filter
 sudo apt-get install ros-melodic-easy-markers 
 sudo apt-get install ros-melodic-face-detector
 ~~~
-alternatively, to install all deoendencies please run
+alternatively, to install all dependencies please run
 ~~~bash
 rosdep install --from-paths src --ignore-src -r -y
 ~~~
@@ -45,3 +45,11 @@ To visualise the detection please run
 rosrun image_view image_view image:=/person_detector/debug
 ~~~
 
+## Human Detection Mode Notes
+If you dont have a camera device such as a Intel realsense. Please run the rosbags. 
+These bags are in the correspoding folder.
+To run the bags. Open Terminal
+~~~
+- roscore
+- rosbag play <NAME OF BAG> -l
+~~~
