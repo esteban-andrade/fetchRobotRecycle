@@ -4,7 +4,7 @@
   <version>0.1.0</version>
   <description>Fullbody person detector on RGB images based on OpenCV HoG Adaboost cascade</description>
 
-  <maintainer email="jordi.pages@pal-robotics.com">jordi pages</maintainer>
+  <maintainer email="esgaanza98@gmail.com">Esteban Andrade</maintainer>
 
   <license>BSD</license>
 
@@ -14,10 +14,13 @@
   <build_depend>pal_detection_msgs</build_depend>
   <build_depend>cv_bridge</build_depend>
   <build_depend>image_transport</build_depend>
+  <build_depend>std_msgs</build_depend>
   <run_depend>roscpp</run_depend>
   <run_depend>sensor_msgs</run_depend>
   <run_depend>pal_detection_msgs</run_depend>
   <run_depend>cv_bridge</run_depend>
   <run_depend>image_transport</run_depend>
+  <run_depend>std_msgs</run_depend>
+
 
 </package>
