@@ -4,12 +4,13 @@ project(pal_person_detector_opencv)
 find_package(catkin REQUIRED COMPONENTS image_transport
                                         pal_detection_msgs
                                         cv_bridge
+                                        std_msgs
                                         roscpp)
 find_package(OpenCV REQUIRED)
 
 
 catkin_package(
-  CATKIN_DEPENDS image_transport cv_bridge pal_detection_msgs roscpp
+  CATKIN_DEPENDS image_transport cv_bridge pal_detection_msgs roscpp  std_msgs
 )
 
 include_directories(SYSTEM ${catkin_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS})
