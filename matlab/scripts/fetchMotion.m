@@ -18,7 +18,7 @@ classdef fetchMotion
             logData = ['transforms-data.mat']; % log data into a mat file
              people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
-                 
+                robot.collision.checkCollision;
                 
                 if robot.gui.StartButton.Value == 1
                     msg = receive(people_sub);
@@ -60,7 +60,7 @@ classdef fetchMotion
                     
                     drawnow()
                     robot.arm_msg.Position = qMatrix(step,:);
-                    robot.arm_msg.Velocity=0.5;
+                    robot.arm_msg.Velocity=1.2;
                     send(robot.arm_pub,robot.arm_msg);
                     
                     if step == size(qMatrix,1)
@@ -86,6 +86,7 @@ classdef fetchMotion
             logData = ['transforms-data.mat']; % log data into a mat file
             people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
+                robot.collision.updateEllipse;
                 
                 if robot.gui.StartButton.Value == 1
                     %animate(robot,qMatrix(step,:));
@@ -223,7 +224,7 @@ classdef fetchMotion
         function time= calculateTime(T, canpose)
             dist = norm(T(1:3,4)' - canpose(:));
             
-            max_steps = 50;
+            max_steps = 10;
             min_steps = 5;
             max_dist = 0.94;
             min_dist = 0.01;
