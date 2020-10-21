@@ -30,8 +30,6 @@ classdef Fetch < handle
         gripper_msg;
         arm_pub;
         arm_msg;
-        cmd_vel_pub;
-        cmd_vel_msg;
         gui;
         collision;
         ros_data;
@@ -62,10 +60,6 @@ classdef Fetch < handle
             % arm publisher
             self.arm_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
             self.arm_msg = rosmessage(self.arm_pub);
-            
-            % cmd_vel publisher
-            self.cmd_vel_pub = rospublisher('/matlab_joint_config', 'sensor_msgs/JointState');
-            self.cmd_vel_msg = rosmessage(self.cmd_vel_pub);
             
             % Will update the position of the MATLAB instance in order to create accuracy on the motion in gazebo
             self.getGazeboState;
@@ -234,6 +228,7 @@ classdef Fetch < handle
                 drawnow()
                
             end
+            
         end
         
         function obtainPcloud(self)

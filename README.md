@@ -11,6 +11,26 @@ In order to get  all the models to gazebo please copy all the folders that are i
 ~~~~bash
 /home/.gazebo/models
 ~~~~
+## Running Project
+To run the project please run the following commands
+~~~
+roslaunch fetch_recycle mazeFetch.launch 
+rosrun fetch_recycle joint_controller.py 
+~~~
+If you dont have a camera connected please run the rosbags ad mentioned before. 
+If you have a camera please start the camera and adjust the launch file based on your camera specifications. Refer to Documentation below.
+~~~
+To move the base of the robot please run: rosrun teleop_twist_keyboard teleop_twist_keyboard.py  
+~~~
+
+## Matlab
+Please ensure you have all the Corresponding ToolBoxes installed such as robotics, ROS, optimization, etc.
+Also please run Peter Corke Toolbox before Running the main. 
+>Note: please Ensure before starting matlab that all the rostopic are running. 
+Once start it please run start on the gui and do all the required motions. 
+
+
+
 ## Person Tracking Dependencies. 
 Please add the following folders into your catkin workspace. These file are under People_tracking_depencies
 ~~~bash
