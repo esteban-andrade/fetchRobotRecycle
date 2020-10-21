@@ -109,7 +109,7 @@ classdef fetchMotion
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
                             disp('Human Detected')
-    %                     end
+                         end
                         robot.model.animate(qMatrix(step, :));
                         endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
@@ -218,13 +218,13 @@ classdef fetchMotion
                 invJ = pinv(J'*J + lambda *eye(7))*J';
                 qdot(i,:) = (invJ*xdot)';
                 for j = 1:7
-%                     if j == 3 || j == 5 || j == 7
-%                         if qMatrix(i,j) >= 180
-%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
-%                         elseif qMatrix(i,j) <= -180
-%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
-%                         end
-%                     end
+                    if j == 1 || j == 3 || j == 5
+                        if qMatrix(i,j) >= 180
+                            qMatrix(i,j) = mod(qMatrix(i,j), 180);
+                        elseif qMatrix(i,j) <= -180
+                            qMatrix(i,j) = mod(qMatrix(i,j), 180);
+                        end
+                    end
                     if qMatrix(i,j) + robot.deltaT*qdot(i,j) < robot.model.qlim(j,1)
                         qdot(i,j) = 0;
                     elseif qMatrix(i,j) + robot.deltaT*qdot(i,j) > robot.model.qlim(j,2)
