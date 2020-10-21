@@ -11,9 +11,8 @@ classdef rosData
     
     methods
         function self = rosData
+            disp('fetching ros data');
             
-            
-            disp('init')
         end
         
         function pose = getCanPosition(self)
@@ -34,6 +33,11 @@ classdef rosData
             xyz(:,2) = xyz(:,2)*cos(p)-xyz(:,3)*sin(p);
             xyz(:,3) = xyz(:,2)*sin(p)+xyz(:,3)*cos(p);
             xyz(:,2) = xyz(:,2) -0.35;
+
+        end
+        
+        function plotPointCloud(self)
+            xyz = self.getPointCloud;
             hold on;
             pcshow(xyz);
             xlabel('X(m)')
