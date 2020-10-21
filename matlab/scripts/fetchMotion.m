@@ -22,16 +22,16 @@ classdef fetchMotion
                 if robot.collision.checkCollision == 0
                 
                     if robot.gui.StartButton.Value == 1
-                        msg = receive(people_sub);
-                        human_detected_status = msg.Data; 
-                        
-                        if human_detected_status==false
-                            robot.gui.EmergencyStopButton.Value = 1;
-                            robot.gui.setEstop;                 
-                            robot.q_before_pause = [];
-                            robot.active_traj = 0;
-                            disp('Human Detected')
-                        end
+    %                     msg = receive(people_sub);
+    %                     human_detected_status = msg.Data; 
+    %                     
+    %                     if human_detected_status==false
+    %                         robot.gui.EmergencyStopButton.Value = 1;
+    %                         robot.gui.setEstop;                 
+    %                         robot.q_before_pause = [];
+    %                         robot.active_traj = 0;
+    %                         disp('Human Detected')
+    %                     end
 
                         %animate(robot,qMatrix(step,:));
                         robot.model.animate(qMatrix(step, :));
