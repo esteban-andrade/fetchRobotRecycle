@@ -35,6 +35,7 @@ classdef Fetch < handle
         gui;
         collision;
         ros_data;
+        pcloud;
     end
 
     methods %% Class for Fetch robot simulation
@@ -73,7 +74,7 @@ classdef Fetch < handle
             
             %% launch collision handler
             self.ros_data = rosData;
-            self.collision = collision(self, self.ros_data.getPointCloud);
+            
         end
 
         %% GetFetchRobot
@@ -229,6 +230,12 @@ classdef Fetch < handle
                 drawnow()
                
             end
+        end
+        
+        function obtainPcloud(self)
+            self.pcloud = self.ros_data.getPointCloud;
+            self.collision = collision(self, self.pcloud);
+            self.ros_data.plotPointCloud(self.pcloud);
         end
     end
 end

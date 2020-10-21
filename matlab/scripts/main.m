@@ -13,9 +13,9 @@ fetch_motion = fetchMotion;
 
 %% Rember to press 'start' on GUI before running this
 
-robot.Move2JointState([1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],5)
+robot.Move2JointState([1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)
 %% point cloud
-robot.ros_data.plotPointCloud; 
+robot.obtainPcloud; 
 
 %% Move to can pose
 

@@ -33,17 +33,16 @@ classdef rosData
             xyz(:,2) = xyz(:,2)*cos(p)-xyz(:,3)*sin(p);
             xyz(:,3) = xyz(:,2)*sin(p)+xyz(:,3)*cos(p);
             xyz(:,2) = xyz(:,2) -0.35;
+            xyz(xyz(:,2)>=1,:) = [];
 
         end
         
-        function plotPointCloud(self)
-            xyz = self.getPointCloud;
+        function plotPointCloud(self, xyz)
             hold on;
             pcshow(xyz);
             xlabel('X(m)')
             ylabel('Y(m)')
             zlabel('Z(m)')
-            title('Detect a Cylinder in a Point Cloud')
             axis equal;
         end
         

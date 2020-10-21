@@ -18,65 +18,74 @@ classdef fetchMotion
             logData = ['transforms-data.mat']; % log data into a mat file
              people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
-                robot.collision.checkCollision;
                 
-                if robot.gui.StartButton.Value == 1
-                    msg = receive(people_sub);
-                    status = msg.Data; 
-                    
-                if status==false
-                    robot.gui.EmergencyStopButton.Value = 1;
-                    robot.gui.setEstop;                 
-                    robot.q_before_pause = [];
-                        robot.active_traj = 0;
-                    disp('Human Detected')
-                end
-                    
-                    %animate(robot,qMatrix(step,:));
-                    robot.model.animate(qMatrix(step, :));
-                    endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
-
-                    %Logs the data in the file premade earlier
-                    if (step == size(qMatrix, 1)) %if this is the last step of the arm
-
-                        transformsData.name = robot.model.name;
-                        transformsData.pose = robot.model.fkine(qMatrix(step, :));
-                        text = [robot.name, ' End-Effector Transform '];
-                        disp(text);
-                        disp(transformsData.pose);
-
-                        if isfile(logData)
-                            %check if the file exists then add to the mat file
-                            a = load(logData);
-                            transformsData = [a.transformsData; transformsData]; %adds data to the end of the mat file
-                            save(logData, 'transformsData');
-                        else
-                            %if the file does not exist, save
-                            save(logData, 'transformsData');
+                if robot.collision.checkCollision == 0
+                
+                    if robot.gui.StartButton.Value == 1
+                        msg = receive(people_sub);
+                        human_detected_status = msg.Data; 
+                        
+                        if human_detected_status==false
+                            robot.gui.EmergencyStopButton.Value = 1;
+                            robot.gui.setEstop;                 
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                            disp('Human Detected')
                         end
 
-                    end
+                        %animate(robot,qMatrix(step,:));
+                        robot.model.animate(qMatrix(step, :));
+                        endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
-                    
-                    drawnow()
-                    robot.arm_msg.Position = qMatrix(step,:);
-                    robot.arm_msg.Velocity=1.2;
-                    send(robot.arm_pub,robot.arm_msg);
-                    
-                    if step == size(qMatrix,1)
-                        robot.q_before_pause = [];
-                        robot.active_traj = 0;
-                    end
-                else
-                    if robot.gui.EmergencyStopButton.Value == 1
-                        robot.q_before_pause = [];
-                        robot.active_traj = 0;
+                        %Logs the data in the file premade earlier
+                        if (step == size(qMatrix, 1)) %if this is the last step of the arm
+
+                            transformsData.name = robot.model.name;
+                            transformsData.pose = robot.model.fkine(qMatrix(step, :));
+                            text = [robot.name, ' End-Effector Transform '];
+                            disp(text);
+                            disp(transformsData.pose);
+
+                            if isfile(logData)
+                                %check if the file exists then add to the mat file
+                                a = load(logData);
+                                transformsData = [a.transformsData; transformsData]; %adds data to the end of the mat file
+                                save(logData, 'transformsData');
+                            else
+                                %if the file does not exist, save
+                                save(logData, 'transformsData');
+                            end
+
+                        end
+
+
+                        drawnow()
+                        robot.arm_msg.Position = qMatrix(step,:);
+                        robot.arm_msg.Velocity=1.2;
+                        send(robot.arm_pub,robot.arm_msg);
+
+                        if step == size(qMatrix,1)
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                        end
                     else
-                        robot.q_before_pause = qMatrix(end,:);
+                        if robot.gui.EmergencyStopButton.Value == 1
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                        else
+                            robot.q_before_pause = qMatrix(end,:);
+                        end
+                        break;
                     end
+                    robot.active_traj = 1;
+                else
+%                     robot.gui.EmergencyStopButton.Value = 1;
+%                     robot.gui.setEstop;
+%                     robot.q_before_pause = [];
+%                     robot.active_traj = 0;
+                    disp('collision detected')
                     break;
                 end
-                robot.active_traj = 1;
             end
             robot.gui.updateAll;
         end
@@ -86,64 +95,73 @@ classdef fetchMotion
             logData = ['transforms-data.mat']; % log data into a mat file
             people_sub = rossubscriber('/person_detector/status','std_msgs/Bool');
             for step = 1:size(qMatrix, 1) % iterate between rows of Q matrix
-                robot.collision.updateEllipse;
                 
-                if robot.gui.StartButton.Value == 1
-                    %animate(robot,qMatrix(step,:));
-                    msg = receive(people_sub);
-                    status = msg.Data;
-                    
-                    if status==false
-                        robot.gui.EmergencyStopButton.Value = 1;
-                        robot.gui.setEstop;
-                        robot.q_before_pause = [];
-                        robot.active_traj = 0;
-                        disp('Human Detected')
-                    end
-                    robot.model.animate(qMatrix(step, :));
-                    endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
+                if robot.collision.checkCollision == 0
+                
+                    if robot.gui.StartButton.Value == 1
+                        %animate(robot,qMatrix(step,:));
+                        msg = receive(people_sub);
+                        status = msg.Data;
+                        
+                        if status==false
+                            robot.gui.EmergencyStopButton.Value = 1;
+                            robot.gui.setEstop;
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                            disp('Human Detected')
+                        end
+                        robot.model.animate(qMatrix(step, :));
+                        endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
-                    %Logs the data in the file premade earlier
-                    if (step == size(qMatrix, 1)) %if this is the last step of the arm
+                        %Logs the data in the file premade earlier
+                        if (step == size(qMatrix, 1)) %if this is the last step of the arm
 
-                        transformsData.name = robot.model.name;
-                        transformsData.pose = robot.model.fkine(qMatrix(step, :));
-                        text = [robot.name, ' End-Effector Transform '];
-                        disp(text);
-                        disp(transformsData.pose);
+                            transformsData.name = robot.model.name;
+                            transformsData.pose = robot.model.fkine(qMatrix(step, :));
+                            text = [robot.name, ' End-Effector Transform '];
+                            disp(text);
+                            disp(transformsData.pose);
 
-                        if isfile(logData)
-                            %check if the file exists then add to the mat file
-                            a = load(logData);
-                            transformsData = [a.transformsData; transformsData]; %adds data to the end of the mat file
-                            save(logData, 'transformsData');
-                        else
-                            %if the file does not exist, save
-                            save(logData, 'transformsData');
+                            if isfile(logData)
+                                %check if the file exists then add to the mat file
+                                a = load(logData);
+                                transformsData = [a.transformsData; transformsData]; %adds data to the end of the mat file
+                                save(logData, 'transformsData');
+                            else
+                                %if the file does not exist, save
+                                save(logData, 'transformsData');
+                            end
+
                         end
 
-                    end
 
+                        drawnow()
+                        robot.arm_msg.Position = qMatrix(step,:);
+                        robot.arm_msg.Velocity=qdot(step,:)/5;
+                        send(robot.arm_pub,robot.arm_msg);
 
-                    drawnow()
-                    robot.arm_msg.Position = qMatrix(step,:);
-                    robot.arm_msg.Velocity=qdot(step,:)/5;
-                    send(robot.arm_pub,robot.arm_msg);
-                    
-                    if step == size(qMatrix,1)
-                        robot.q_before_pause = [];
-                        robot.active_traj = 0;
-                    end
-                else
-                    if robot.gui.EmergencyStopButton.Value == 1
-                        robot.q_before_pause = [];
-                        robot.active_traj = 0;
+                        if step == size(qMatrix,1)
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                        end
                     else
-                        robot.q_before_pause = qMatrix(end,:);
+                        if robot.gui.EmergencyStopButton.Value == 1
+                            robot.q_before_pause = [];
+                            robot.active_traj = 0;
+                        else
+                            robot.q_before_pause = qMatrix(end,:);
+                        end
+                        break;
                     end
+                    robot.active_traj = 1;
+                else
+%                     robot.gui.EmergencyStopButton.Value = 1;
+%                     robot.gui.setEstop;
+%                     robot.q_before_pause = [];
+%                     robot.active_traj = 0;
+                    disp('collision detected')
                     break;
                 end
-                robot.active_traj = 1;
             end
             robot.gui.updateAll;
         end
@@ -224,7 +242,7 @@ classdef fetchMotion
         function time= calculateTime(T, canpose)
             dist = norm(T(1:3,4)' - canpose(:));
             
-            max_steps = 10;
+            max_steps = 50;
             min_steps = 5;
             max_dist = 0.94;
             min_dist = 0.01;
