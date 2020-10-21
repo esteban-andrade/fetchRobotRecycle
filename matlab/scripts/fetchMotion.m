@@ -79,10 +79,10 @@ classdef fetchMotion
                     end
                     robot.active_traj = 1;
                 else
-%                     robot.gui.EmergencyStopButton.Value = 1;
-%                     robot.gui.setEstop;
-%                     robot.q_before_pause = [];
-%                     robot.active_traj = 0;
+                    robot.gui.EmergencyStopButton.Value = 1;
+                    robot.gui.setEstop;
+                    robot.q_before_pause = [];
+                    robot.active_traj = 0;
                     disp('collision detected')
                     break;
                 end
@@ -109,7 +109,7 @@ classdef fetchMotion
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
                             disp('Human Detected')
-                        end
+    %                     end
                         robot.model.animate(qMatrix(step, :));
                         endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
@@ -155,10 +155,10 @@ classdef fetchMotion
                     end
                     robot.active_traj = 1;
                 else
-%                     robot.gui.EmergencyStopButton.Value = 1;
-%                     robot.gui.setEstop;
-%                     robot.q_before_pause = [];
-%                     robot.active_traj = 0;
+                    robot.gui.EmergencyStopButton.Value = 1;
+                    robot.gui.setEstop;
+                    robot.q_before_pause = [];
+                    robot.active_traj = 0;
                     disp('collision detected')
                     break;
                 end
