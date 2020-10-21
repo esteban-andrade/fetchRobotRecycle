@@ -5,14 +5,50 @@ clc;
 view(3);
 
 robot = Fetch('fetch');
-ros_data = rosData;
 fetch_motion = fetchMotion;
 
 %%
-xyz = ros_data.getPointCloud;
+xyz = robot.ros_data.getPointCloud;
+robot.ros_data.plotPointCloud
 
 %%
 t = GetLinkPoses(robot.model.getpos, robot);
+
+x1 = min(xyz(:,1));
+y1 = min(xyz(:,2));
+z1 = min(xyz(:,3));
+x2 = max(xyz(:,1));
+y2 = max(xyz(:,2));
+z2 = max(xyz(:,3));
+
+for i=3:length(t)
+    T = t(:,:,i);
+    if T(1,4) >= x1 && T(1,4) <= x2
+        if T(2,4) >= y1 && T(2,4) <= y2
+            if T(3,4) >= z1 && T(3,4) <= z2
+                disp('collision');
+                break
+            end
+        end
+    end
+    
+    if i == length(t)
+        disp('no collision');
+    end
+end
+
+%%
+
+x = xyz(:, 1);
+y = xyz(:, 2);
+z = xyz(:, 3);
+inRangeX = x >= x1 & x <= x2;
+inRangeY = y >= y1 & y <= y2;
+inRangeZ = z >= z1 & z <= z2;
+% Find out rows where it's in range on all three axes.
+pointsInRange = inRangeX & inRangeY & inRangeZ;
+% Extract those points in the box to an output array.
+boxPoints = xyz(pointsInRange, :);
 
 %%
 hold on;
@@ -70,30 +106,3 @@ transforms(:,:,1) = robot.model.base;
 end
 
 
-%% create mesh
-function [self,mesh] = createmesh(bricksPoses)
-            %   Create and place 9 bricks from ply file
-            %   input:      array of brick poses
-            %   output1:    class object
-            %   output2:    mesh array of type patch
-            
-            [f,v,data] = plyread('ply/Brick.ply','tri');
-            vertexColours = [data.vertex.red, data.vertex.green, data.vertex.blue] / 255;
-
-            for i=1:size(bricksPoses,1)
-                mesh(i) = trisurf(f,v(:,1)+bricksPoses(i,1),v(:,2)+bricksPoses(i,2), v(:,3)+bricksPoses(i,3) ...
-                ,'FaceVertexCData',vertexColours,'EdgeColor','interp','EdgeLighting','flat');
-            end
-            %%
-            for i=1:length(robot.plyData)
-                vertexColours{i} = [robot.plyData{1}.vertex.red, robot.plyData{1}.vertex.green, robot.plyData{1}.vertex.blue]/255;
-            end
-            
-            f = robot.faceData;
-            v = robot.vertexData;
-            
-            for i=1:size(bricksPoses,1)
-                mesh(i) = trisurf(f,v(:,1)+bricksPoses(i,1),v(:,2)+bricksPoses(i,2), v(:,3)+bricksPoses(i,3) ...
-                ,'FaceVertexCData',vertexColours,'EdgeColor','interp','EdgeLighting','flat');
-            end
-        end
