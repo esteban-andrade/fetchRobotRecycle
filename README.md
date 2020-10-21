@@ -3,28 +3,48 @@ Here is the Group project for Robotics Assignment 2. For Fetch Robot Recycling
 
 ## Important information:
 The following package builds on top of the fetch gazebo ros package. 
-Please install al fetch robot packages from ROS
+Please install all fetch robot packages from ROS
 
 ## Spawn Model
 In order to get  all the models to gazebo please copy all the folders that are inside the model file.  Paste it in the following location
 
 ~~~~bash
-/home/.gazebo/models
+cp -avr ~/catkin_ws/src/fetch_recycle/models/ ~/.gazebo/models
 ~~~~
 ## Running Project
-To run the project please run the following commands
+To run the project please run the following commands:
+
+### Luanch world:
 ~~~
 roslaunch fetch_recycle mazeFetch.launch 
-rosrun fetch_recycle joint_controller.py 
-~~~
-If you dont have a camera connected please run the rosbags ad mentioned before. 
-If you have a camera please start the camera and adjust the launch file based on your camera specifications. Refer to Documentation below.
-~~~
-To move the base of the robot please run: rosrun teleop_twist_keyboard teleop_twist_keyboard.py  
 ~~~
 
+### Run Joint controller:
+``` bash
+rosrun fetch_recycle joint_controller.py 
+```
+### RGBD Camera
+If you have a camera please start the camera and adjust the launch file based on your camera specifications. Refer to Documentation below.
+
+If you dont have a camera device such as a Intel realsense. Please run the rosbags. 
+These bags are in the correspoding folder.
+To run the bags. Open Terminal
+~~~
+rosbag play <NAME OF BAG> -l
+~~~
+
+### Teleop
+To move the base of the robot please run: 
+```
+rosrun teleop_twist_keyboard teleop_twist_keyboard.py  
+```
+
 ## Matlab
-Please ensure you have all the Corresponding ToolBoxes installed such as robotics, ROS, optimization, etc.
+Please ensure you have all the following ToolBoxes installed:
+- robotics
+- ROS 
+- optimization
+
 Also please run Peter Corke Toolbox before Running the main. 
 >Note: please Ensure before starting matlab that all the rostopic are running. 
 Once start it please run start on the gui and do all the required motions. 
@@ -65,11 +85,3 @@ To visualise the detection please run
 rosrun image_view image_view image:=/person_detector/debug
 ~~~
 
-## Human Detection Mode Notes
-If you dont have a camera device such as a Intel realsense. Please run the rosbags. 
-These bags are in the correspoding folder.
-To run the bags. Open Terminal
-~~~
-- roscore
-- rosbag play <NAME OF BAG> -l
-~~~

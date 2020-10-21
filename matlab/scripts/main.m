@@ -13,7 +13,9 @@ robot = Fetch('fetch');
 
 %% point cloud
 robot.obtainPcloud;
-%%
+%% Code below has been moved to GUI
+
+
 % %% Rember to press 'start' on GUI before running this
 % 
 % robot.Move2JointState([1.2812 0.1257 -3.0902 1.7200 0.0000 2.0091 0.0000],50)

@@ -8,14 +8,20 @@ classdef collision
     end
     
     methods
+        %% Constructor
+        % robot - seriallink robot model
+        % pcloud - point cloud matrix (nx3)
         function self = collision(robot, pcloud)
            self.robot = robot;
            self.pcloud = pcloud;
         end
         
+        %% check if collision has ocurred
         function result = checkCollision(self)
+            % get link poses
             t = self.GetLinkPoses(self.robot.model.getpos, self.robot);
 
+            % define minimum and maximum (xyz) search area
             x1 = min(self.pcloud(:,1));
             y1 = min(self.pcloud(:,2));
             z1 = min(self.pcloud(:,3));
@@ -23,6 +29,7 @@ classdef collision
             y2 = max(self.pcloud(:,2));
             z2 = max(self.pcloud(:,3));
 
+            % check if link pose is inside pointcloud
             for i=3:length(t)
                 T = t(:,:,i);
                 if T(1,4) >= x1 && T(1,4) <= x2
@@ -40,6 +47,7 @@ classdef collision
             end
         end
         
+        %% Update Ellipse (not used in final)
         function [centerPoint, radii] = updateEllipse(self)
             % New values for the ellipsoid (guessed these, need proper model to work out correctly)
             centerPoint = [0,0,0];
@@ -66,6 +74,7 @@ classdef collision
 %             self.robot.model.plot3d(self.robot.model.getpos);
         end
         
+        %% Determine Algebraic distance (not used in final)
         function algebraicDist = GetAlgebraicDist(points, centerPoint, radii)
 
         algebraicDist = ((points(:,1)-centerPoint(1))/radii(1)).^2 ...

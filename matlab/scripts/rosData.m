@@ -16,6 +16,7 @@ classdef rosData
             disp('init')
         end
         
+        %% Obtain can pose from ROS topic
         function pose = getCanPosition(self)
             self.can_position_sub = rossubscriber('/aruco_single/position');
             can_position_msg = receive(self.can_position_sub);
@@ -23,6 +24,7 @@ classdef rosData
             pose = [raw_pos.X-0.02, raw_pos.Z+0.1, (raw_pos.Y + 1)];
         end
         
+        %% Obtain RGBD pointcloud from ROS topic
         function xyz = getPointCloud(self)
             self.pc_sub = rossubscriber('/head_camera/depth_registered/points');
             pc_msg = receive(self.pc_sub);
@@ -38,6 +40,7 @@ classdef rosData
 
         end
         
+        %% plot point cloud
         function plotPointCloud(self, xyz)
             hold on;
             pcshow(xyz);
@@ -47,7 +50,7 @@ classdef rosData
             axis equal;
         end
         
-        
+        %% Calculate local bin pose relative to the Fetch base
         function local_bin_position = getBinLocalPosition(self)
             self.odom_sub = rossubscriber('/odom');
             odom_msg = receive(self.odom_sub);
@@ -59,6 +62,7 @@ classdef rosData
             local_bin_position = [x y 1.15];
         end
         
+        %% Get RGB image from ROS topic (not used in final)
         function rgb = getRGBimage(self)
             self.rgb_sub = rossubscriber('/head_camera/rgb/image_raw');
             rgb_msg = receive(self.rgb_sub);

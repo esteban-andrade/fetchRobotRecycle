@@ -13,7 +13,8 @@ classdef fetchMotion
                 qMatrix(i, :) = (1 - s(i)) * q1 + s(i) * q2; % Generate interpolated joint angles
             end
         end
-     %%    
+        
+     %% Move arm and publish joint angles and velocities
         function motion(qMatrix, robot) %pass Q matrix and corresponding robot
             
             logData = ['transforms-data.mat']; % log data into a mat file
@@ -68,7 +69,8 @@ classdef fetchMotion
                         robot.arm_msg.Velocity=1.2;     % sent static joint vel
                         send(robot.arm_pub,robot.arm_msg); 
 
-                           %check gui for status of buttons
+                        % reset variables if last step in qMatrix is being
+                        % executed for (GUI)
                         if step == size(qMatrix,1)
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
@@ -94,7 +96,8 @@ classdef fetchMotion
             end
             robot.gui.updateAll;
         end
-        %%
+        
+        %% Move arm and publish joint angles and velocities using RMRC
          function RMRCmotion(qMatrix,qdot, robot) %pass Q matrix and corresponding robot
             
             logData = ['transforms-data.mat']; % log data into a mat file
@@ -107,16 +110,17 @@ classdef fetchMotion
                     if robot.gui.StartButton.Value == 1 % check for gui status 
                         %animate(robot,qMatrix(step,:));
                         msg = receive(people_sub);
-                        status = msg.Data;
+                        human_detected_status = msg.Data;
                         
-                        if status==false % if human detected false(environment is not safe)
+                        if human_detected_status==false % if human detected false(environment is not safe)
                             % Set emergency subroutine
                             robot.gui.EmergencyStopButton.Value = 1;
                             robot.gui.setEstop;
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
                             disp('Human Detected')
-                         end
+                        end
+                        
                         robot.model.animate(qMatrix(step, :));
                         endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
@@ -146,7 +150,9 @@ classdef fetchMotion
                         robot.arm_msg.Position = qMatrix(step,:); % send joint config
                         robot.arm_msg.Velocity=qdot(step,:)/5; % send jont vel with added gain of 0.2.
                         send(robot.arm_pub,robot.arm_msg);
-                           % check if current state is equal to size of q matriz for gui status 
+                        
+                       % reset variables if last step in qMatrix is being
+                       % executed (for GUI)
                         if step == size(qMatrix,1)
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
@@ -190,7 +196,7 @@ classdef fetchMotion
             initialRPY = tr2rpy(initialPose); % get intial RPY
             targetRPY = tr2rpy(targetPose); % get target RPY
             
-             s = lspb(0,1,robot.steps);   % trapezoidal trajectory 
+            s = lspb(0,1,robot.steps);   % trapezoidal trajectory 
             for i=1:robot.steps
                 x(1,i) = (1-s(i))*initialPose(1, 4) + s(i)*targetPose(1, 4);% Points in x
                 x(2,i) = (1-s(i))*initialPose(2, 4) + s(i)*targetPose(2, 4);% Points in y
@@ -246,10 +252,11 @@ classdef fetchMotion
             end                                           
             
         end
-        %% function to calculate the time based on pose 
-        function time= calculateTime(T, canpose)
+        
+        %% function to calculate the dynamic time based on distance to pose 
+        function time= calculateTime(T, goalpose)
             % get distance between transform and target pose 
-            dist = norm(T(1:3,4)' - canpose(:));
+            dist = norm(T(1:3,4)' - goalpose(:));
             
             % constant and constrans 
             max_steps = 50;
