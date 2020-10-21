@@ -11,8 +11,9 @@ classdef rosData
     
     methods
         function self = rosData
-            disp('fetching ros data');
             
+            
+            disp('init')
         end
         
         function pose = getCanPosition(self)
