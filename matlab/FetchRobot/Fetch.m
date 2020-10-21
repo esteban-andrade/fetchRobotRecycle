@@ -34,6 +34,8 @@ classdef Fetch < handle
         collision;
         ros_data;
         pcloud;
+        fetch_motion;
+        can_pose
     end
 
     methods %% Class for Fetch robot simulation
@@ -68,6 +70,8 @@ classdef Fetch < handle
             
             %% launch collision handler
             self.ros_data = rosData;
+            
+            self.fetch_motion = fetchMotion;
             
         end
 
@@ -231,6 +235,24 @@ classdef Fetch < handle
             self.pcloud = self.ros_data.getPointCloud;
             self.collision = collision(self, self.pcloud);
             self.ros_data.plotPointCloud(self.pcloud);
+        end
+        
+        function getCan(self)
+            self.can_pose = self.ros_data.getCanPosition;
+            self.OpenGripper(1)
+            time = self.fetch_motion.calculateTime((self.model.fkine(self.model.getpos)), self.can_pose);
+            self.RMRC2Pose(time,0.02,[self.can_pose(1), self.can_pose(2), self.can_pose(3)+0.175]);
+
+            time = self.fetch_motion.calculateTime(self.model.fkine(self.model.getpos), self.can_pose);
+            self.RMRC2Pose(time,0.02,[self.can_pose(1), self.can_pose(2), self.can_pose(3)-0.01]);
+        end
+        
+        function recycle(self)
+            
+            self.RMRC2Pose(5,0.02,[self.can_pose(1), self.can_pose(2), self.can_pose(3)+0.175]);
+            bin_position = self.ros_data.getBinLocalPosition
+            time = self.fetch_motion.calculateTime(self.model.fkine(self.model.getpos), bin_position);
+            self.RMRC2Pose((time),0.02,[bin_position(1), bin_position(2), bin_position(3)]);
         end
     end
 end

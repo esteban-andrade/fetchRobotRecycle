@@ -22,16 +22,16 @@ classdef fetchMotion
                 if robot.collision.checkCollision == 0
                 
                     if robot.gui.StartButton.Value == 1
-                        msg = receive(people_sub);
-                        human_detected_status = msg.Data; 
-                        
-                        if human_detected_status==false
-                            robot.gui.EmergencyStopButton.Value = 1;
-                            robot.gui.setEstop;                 
-                            robot.q_before_pause = [];
-                            robot.active_traj = 0;
-                            disp('Human Detected')
-                        end
+    %                     msg = receive(people_sub);
+    %                     human_detected_status = msg.Data; 
+    %                     
+    %                     if human_detected_status==false
+    %                         robot.gui.EmergencyStopButton.Value = 1;
+    %                         robot.gui.setEstop;                 
+    %                         robot.q_before_pause = [];
+    %                         robot.active_traj = 0;
+    %                         disp('Human Detected')
+    %                     end
 
                         %animate(robot,qMatrix(step,:));
                         robot.model.animate(qMatrix(step, :));
@@ -79,10 +79,10 @@ classdef fetchMotion
                     end
                     robot.active_traj = 1;
                 else
-%                     robot.gui.EmergencyStopButton.Value = 1;
-%                     robot.gui.setEstop;
-%                     robot.q_before_pause = [];
-%                     robot.active_traj = 0;
+                    robot.gui.EmergencyStopButton.Value = 1;
+                    robot.gui.setEstop;
+                    robot.q_before_pause = [];
+                    robot.active_traj = 0;
                     disp('collision detected')
                     break;
                 end
@@ -109,7 +109,7 @@ classdef fetchMotion
                             robot.q_before_pause = [];
                             robot.active_traj = 0;
                             disp('Human Detected')
-                        end
+                         end
                         robot.model.animate(qMatrix(step, :));
                         endEffector = robot.model.fkine(qMatrix(step, :)); %#ok<NASGU>
 
@@ -155,10 +155,10 @@ classdef fetchMotion
                     end
                     robot.active_traj = 1;
                 else
-%                     robot.gui.EmergencyStopButton.Value = 1;
-%                     robot.gui.setEstop;
-%                     robot.q_before_pause = [];
-%                     robot.active_traj = 0;
+                    robot.gui.EmergencyStopButton.Value = 1;
+                    robot.gui.setEstop;
+                    robot.q_before_pause = [];
+                    robot.active_traj = 0;
                     disp('collision detected')
                     break;
                 end
@@ -218,13 +218,13 @@ classdef fetchMotion
                 invJ = pinv(J'*J + lambda *eye(7))*J';
                 qdot(i,:) = (invJ*xdot)';
                 for j = 1:7
-%                     if j == 3 || j == 5 || j == 7
-%                         if qMatrix(i,j) >= 180
-%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
-%                         elseif qMatrix(i,j) <= -180
-%                             qMatrix(i,j) = mod(qMatrix(i,j), -180);
-%                         end
-%                     end
+                    if j == 1 || j == 3 || j == 5
+                        if qMatrix(i,j) >= 180
+                            qMatrix(i,j) = mod(qMatrix(i,j), 180);
+                        elseif qMatrix(i,j) <= -180
+                            qMatrix(i,j) = mod(qMatrix(i,j), 180);
+                        end
+                    end
                     if qMatrix(i,j) + robot.deltaT*qdot(i,j) < robot.model.qlim(j,1)
                         qdot(i,j) = 0;
                     elseif qMatrix(i,j) + robot.deltaT*qdot(i,j) > robot.model.qlim(j,2)
